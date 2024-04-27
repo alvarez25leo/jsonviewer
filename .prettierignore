@@ -1,0 +1,9 @@
+node_modules/
+dist/
+public/
+package-lock.json
+package.json
+index.html
+production.html
+tsconfig.json
+tsconfig.node.json

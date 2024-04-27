@@ -1,0 +1,42 @@
+import { useEffect, useRef, ReactNode } from "react"
+
+interface ModalComponentProps {
+	title?: string
+	openModal: boolean
+	closeModal: () => void
+	children: ReactNode
+}
+const ModalComponent = ({ openModal, closeModal, children, title }: ModalComponentProps) => {
+	const ref = useRef<HTMLDialogElement>(null)
+
+	useEffect(() => {
+		if (openModal) {
+			ref.current?.showModal()
+		} else {
+			ref.current?.close()
+		}
+	}, [openModal])
+
+	return (
+		<dialog className="modal-dialog overflow-hidden rounded-lg p-3 shadow-lg" modal-mode="mega" ref={ref} onCancel={closeModal}>
+			<div className="relative h-full w-full ">
+				<div className="mb-2 flex w-full">
+					<div>{title && <h2 className="text-lg font-bold text-[#0ae98a] opacity-80">{title}</h2>}</div>
+					<div className="flex w-full justify-end">
+						<button
+							onClick={closeModal}
+							className="flex h-[35px] w-[35px] items-center justify-center rounded-[8px] border-0 bg-[#13161ccc] text-white outline-0"
+						>
+							<svg viewBox="0 0 16 16" fill="currentColor" width={14} height={14}>
+								<path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z" />
+							</svg>
+						</button>
+					</div>
+				</div>
+				<div className="h-full w-full overflow-auto">{children}</div>
+			</div>
+		</dialog>
+	)
+}
+
+export default ModalComponent
