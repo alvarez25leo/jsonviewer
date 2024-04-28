@@ -20,7 +20,7 @@ export const NodeModal = ({ opened, onClose }: modalProps) => {
 
 	console.log("atomOneDark", JSON.stringify(atomOneDark, null, 2))
 	return (
-		<ModalComponent openModal={opened} title="Codigo" closeModal={() => onClose()}>
+		<ModalComponent openModal={opened} title="Code" closeModal={() => onClose()}>
 			<div className="mt-1 text-white opacity-45">JSON Content </div>
 			<div className="mt-2 rounded-md bg-[#1e2229] p-1">
 				<SyntaxHighlighter className="code-editor-preview custom-scrollbar rounded-md" language="json" style={atomOneDark as any}>

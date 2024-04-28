@@ -5,8 +5,10 @@ interface ModalComponentProps {
 	openModal: boolean
 	closeModal: () => void
 	children: ReactNode
+	style?: React.CSSProperties
+	className?: string
 }
-const ModalComponent = ({ openModal, closeModal, children, title }: ModalComponentProps) => {
+const ModalComponent = ({ openModal, closeModal, children, title, style, className }: ModalComponentProps) => {
 	const ref = useRef<HTMLDialogElement>(null)
 
 	useEffect(() => {
@@ -18,11 +20,22 @@ const ModalComponent = ({ openModal, closeModal, children, title }: ModalCompone
 	}, [openModal])
 
 	return (
-		<dialog className="modal-dialog overflow-hidden rounded-lg p-3 shadow-lg" modal-mode="mega" ref={ref} onCancel={closeModal}>
+		<dialog
+			className={`modal-dialog overflow-hidden rounded-lg p-3 shadow-lg ${className || ""}`}
+			modal-mode="mega"
+			ref={ref}
+			style={style}
+			onCancel={closeModal}
+		>
 			<div className="relative h-full w-full ">
-				<div className="mb-2 flex w-full">
-					<div>{title && <h2 className="text-lg font-bold title-modal opacity-80">{title}</h2>}</div>
-					<div className="flex w-full justify-end">
+				<div
+					className="mb-2 grid w-full"
+					style={{
+						gridTemplateColumns: "1fr 35px",
+					}}
+				>
+					<div>{title && <h2 className="title-modal text-lg font-bold opacity-80">{title}</h2>}</div>
+					<div className="flex w-full">
 						<button
 							onClick={closeModal}
 							className="flex h-[35px] w-[35px] items-center justify-center rounded-[8px] border-0 bg-[#13161ccc] text-white outline-0"

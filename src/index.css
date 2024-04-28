@@ -150,6 +150,11 @@ dialog:not([open]) {
 	max-height: 450px;
 }
 
+.code-editor-preview-type{
+    max-height: 600px;
+    margin-bottom: 20px;
+}
+
 .edge {
 	stroke-dasharray: 5;
 	animation: dashdraw 0.5s linear infinite;

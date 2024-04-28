@@ -4,7 +4,10 @@ import * as Modals from "@/types/modal"
 
 type ModalComponent = { key: Modal; component: React.FC<modalProps> }
 
-const modalComponents: ModalComponent[] = [{ key: "node", component: Modals.NodeModal }]
+const modalComponents: ModalComponent[] = [
+	{ key: "node", component: Modals.NodeModal },
+	{ key: "type", component: Modals.TypeModal },
+]
 
 const ModalControllerComponent = () => {
 	const setVisible = useModal((state) => state.setVisible)
