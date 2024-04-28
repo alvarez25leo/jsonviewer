@@ -150,9 +150,9 @@ dialog:not([open]) {
 	max-height: 450px;
 }
 
-.code-editor-preview-type{
-    max-height: 600px;
-    margin-bottom: 20px;
+.code-editor-preview-type {
+	max-height: 600px;
+	margin-bottom: 20px;
 }
 
 .edge {
@@ -174,7 +174,7 @@ dialog:not([open]) {
 	opacity: 0.6;
 }
 .button-zoom-list.with-text {
-    font-size: 14px;
+	font-size: 14px;
 }
 .button-zoom-list:hover {
 	opacity: 1;

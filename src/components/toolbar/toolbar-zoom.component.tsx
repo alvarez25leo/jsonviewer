@@ -26,11 +26,11 @@ const ToolbarZoomComponent = () => {
 	}
 
 	return (
-		<div className={`absolute bottom-2 h-[48px] rounded-[4px]   ${showPanel ? "right-2" : "right-20"}`}>
+		<div className={`absolute bottom-2 z-20 h-[48px] rounded-[4px]  ${showPanel ? "right-2" : "right-20"}`}>
 			<div className="toolbar-zoom-container relative ">
 				<div></div>
 				<div className="flex gap-x-1">
-                   <SearchInput />
+					<SearchInput />
 					<div>
 						<button
 							title="Generate Types"

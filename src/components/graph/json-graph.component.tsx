@@ -13,7 +13,7 @@ const JsonGraphComponent = ({ json }: JsonGraphProps) => {
 				<GraphViewComponent json={json} />
 			</div>
 			<ModalControllerComponent />
-            <ToolbarZoomComponent />
+			<ToolbarZoomComponent />
 		</>
 	)
 }
