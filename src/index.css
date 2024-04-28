@@ -3,6 +3,7 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+    --bg-page-editor: #23272e;
 }
 
 @tailwind base;
@@ -40,16 +41,17 @@ body {
 	}
 
 	rect {
-		fill: #13161c;
+		/* fill: #13161c; */
+		fill: var(--bg-page-editor);
 	}
 
 	.bg-container-editor-graph::before {
-		background-color: #13161c;
+		background-color: var(--bg-page-editor);
 		background-image: radial-gradient(37.88% 68.62% at 50% 0, rgba(10, 233, 138, 0.3) 0, rgba(0, 124, 71, 0) 80%),
 			radial-gradient(10% 10% at 50% 0, rgba(10, 233, 138, 0.5) 0, rgba(0, 124, 71, 0.4) 90%, rgba(0, 124, 71, 0) 0),
 			radial-gradient(100% 28.09% at 100% 10%, rgba(10, 233, 138, 0.2) 0, rgba(0, 124, 71, 0.1) 80%, rgba(0, 124, 71, 0) 100%),
-			linear-gradient(180deg, rgba(0, 124, 71, 0.075) 35.79%, rgba(0, 124, 71, 0.05) 80%, #13161c),
-			radial-gradient(74.84% 135.56% at 100% 10%, rgba(0, 124, 71, 0.5) 0, #13161c 80%);
+			linear-gradient(180deg, rgba(0, 124, 71, 0.075) 35.79%, rgba(0, 124, 71, 0.05) 80%, var(--bg-page-editor)),
+			radial-gradient(74.84% 135.56% at 100% 10%, rgba(0, 124, 71, 0.5) 0, var(--bg-page-editor) 80%);
 		background-repeat: no-repeat;
 		filter: blur(50px);
 		content: "";
