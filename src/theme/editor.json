@@ -40,7 +40,7 @@
         "color": "#e06c75"
     },
     "hljs-literal": {
-        "color": "#56b6c2"
+        "color": "#f85c50"
     },
     "hljs-string": {
         "color": "#40c057"
@@ -64,7 +64,7 @@
         "color": "#e6c07b"
     },
     "hljs-attr": {
-        "color": "#a5d8ff"
+        "color": "#59b8ff"
     },
     "hljs-variable": {
         "color": "#a5d8ff"
@@ -85,7 +85,7 @@
         "color": "#a5d8ff"
     },
     "hljs-number": {
-        "color": "#a5d8ff"
+        "color": "#e8c479"
     },
     "hljs-symbol": {
         "color": "#61aeee"
