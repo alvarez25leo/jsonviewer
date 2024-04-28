@@ -1,9 +1,11 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage.hooks"
 import useGraph from "@/store/useGraph"
+import useModal from "@/store/useModal"
 import { useEffect, useState } from "react"
 
 const ToolbarZoomComponent = () => {
 	const [showPanel] = useLocalStorage<boolean>("showPanel", true)
+    const setVisible = useModal(state => state.setVisible);
 	const zoomIn = useGraph((state) => state.zoomIn)
 	const zoomOut = useGraph((state) => state.zoomOut)
 	const centerView = useGraph((state) => state.centerView)
@@ -28,6 +30,17 @@ const ToolbarZoomComponent = () => {
 				<div></div>
 				<div className="flex gap-x-1">
 					<div>
+						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => setVisible("type")(true)}>
+							<svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 16 16" height="20" width="20">
+								<path
+									fillRule="evenodd"
+									clipRule="evenodd"
+									d="M1.5 1h2v1H2v12h1.5v1h-2l-.5-.5v-13l.5-.5zm6 6h-2L5 6.5v-2l.5-.5h2l.5.5v2l-.5.5zM6 6h1V5H6v1zm7.5 1h-3l-.5-.5v-3l.5-.5h3l.5.5v3l-.5.5zM11 6h2V4h-2v2zm-3.5 6h-2l-.5-.5v-2l.5-.5h2l.5.5v2l-.5.5zM6 11h1v-1H6v1zm7.5 2h-3l-.5-.5v-3l.5-.5h3l.5.5v3l-.5.5zM11 12h2v-2h-2v2zm-1-2H8v1h2v-1zm0-5H8v1h2V5z"
+								/>
+							</svg>
+						</button>
+					</div>
+					<div>
 						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => centerView()}>
 							<svg
 								viewBox="0 0 24 24"
@@ -35,8 +48,8 @@ const ToolbarZoomComponent = () => {
 								data-testid="svg-icon"
 								focusable="false"
 								role="presentation"
-                                width={20}
-                                height={20}
+								width={20}
+								height={20}
 							>
 								<path
 									fill="currentColor"
@@ -53,7 +66,10 @@ const ToolbarZoomComponent = () => {
 						</button>
 					</div>
 					<div>
-						<button className="button-zoom-list with-text flex h-[44px] w-[44px] items-center justify-center" onClick={() => handleResetZoom()}>
+						<button
+							className="button-zoom-list with-text flex h-[44px] w-[44px] items-center justify-center"
+							onClick={() => handleResetZoom()}
+						>
 							{Math.round(zoomFactor * 100)}%
 						</button>
 					</div>
