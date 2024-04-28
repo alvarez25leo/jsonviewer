@@ -51,7 +51,7 @@ export const StyledForeignObject = styled.foreignObject<{ $isObject?: boolean }>
 		/* background: rgba(255, 214, 0, 0.3); */
 		/* background: rgba(255, 118, 125, 0.3); */
 		/* background: rgba(233, 102, 173, 0.3); */
-		background: rgba(251, 196 ,81, 0.3);
+		background: rgba(251, 196, 81, 0.3);
 	}
 
 	.renderVisible {

@@ -30,7 +30,7 @@ export const TextRenderer: React.FC<{ children: string }> = ({ children }) => {
 	if (isColorFormat(children?.replaceAll('"', ""))) {
 		return (
 			<StyledRow>
-                <ColorSwatch size={12} radius={4} color={children?.replaceAll('"', "")} />
+				<ColorSwatch size={12} radius={4} color={children?.replaceAll('"', "")} />
 				{children?.replaceAll('"', "")}
 			</StyledRow>
 		)

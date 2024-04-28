@@ -96,7 +96,7 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 					<div className="mt-2 text-center text-[#1e2229]">Generating types...</div>
 				</div>
 			) : null}
-			<div className="mt-2 rounded-md bg-[#1e2229] p-1 relative">
+			<div className="relative mt-2 rounded-md bg-[#1e2229] p-1">
 				<SyntaxHighlighter
 					className="code-editor-preview-type custom-scrollbar rounded-md"
 					language={editorLanguage}
@@ -104,7 +104,7 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 				>
 					{type}
 				</SyntaxHighlighter>
-                <div className="absolute right-3 top-3">
+				<div className="absolute right-3 top-3">
 					<CopyComponent value={type} />
 				</div>
 			</div>
