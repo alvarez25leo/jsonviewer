@@ -39,6 +39,7 @@ const GraphViewComponent = ({ json }: GraphViewProps) => {
 	}, 300)
 
 	useEffect(() => {
+        if(json === "") return
 		setContents({ contents: json, skipUpdate: true })
 	}, [json])
 
