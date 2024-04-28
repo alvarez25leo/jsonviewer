@@ -161,18 +161,26 @@ dialog:not([open]) {
 	}
 }
 
-
-
-.button-zoom-list{
-    border-radius: 4px;
-    align-items: center;
-    justify-items: center;
+.button-zoom-list {
+	border-radius: 4px;
+	align-items: center;
+	justify-items: center;
+	color: #fff;
+	opacity: 0.6;
 }
 
+.button-zoom-list:hover {
+	opacity: 1;
+	background: rgba(255, 255, 255, 0.1);
+}
 
-.toolbar-zoom-container{
- background: #fff;
- border-radius: 4px;
- padding: 2px;
- box-shadow: 0 4px 16px #05003812;
+.toolbar-zoom-container {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	padding: 2px;
+	box-shadow: 0 4px 16px #05003812;
+}
+
+.title-modal {
+	color: #0ae98a;
 }

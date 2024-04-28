@@ -21,7 +21,7 @@ const ModalComponent = ({ openModal, closeModal, children, title }: ModalCompone
 		<dialog className="modal-dialog overflow-hidden rounded-lg p-3 shadow-lg" modal-mode="mega" ref={ref} onCancel={closeModal}>
 			<div className="relative h-full w-full ">
 				<div className="mb-2 flex w-full">
-					<div>{title && <h2 className="text-lg font-bold text-[#0ae98a] opacity-80">{title}</h2>}</div>
+					<div>{title && <h2 className="text-lg font-bold title-modal opacity-80">{title}</h2>}</div>
 					<div className="flex w-full justify-end">
 						<button
 							onClick={closeModal}
