@@ -9,7 +9,7 @@ interface JsonGraphProps {
 const JsonGraphComponent = ({ json }: JsonGraphProps) => {
 	return (
 		<>
-			<div className=" h-screen">
+			<div className="h-screen w-full">
 				<GraphViewComponent json={json} />
 			</div>
 			<ModalControllerComponent />

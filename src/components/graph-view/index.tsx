@@ -43,8 +43,8 @@ const GraphViewComponent = ({ json }: GraphViewProps) => {
 	}, [json])
 
 	return (
-		<div className="json-graph-container relative h-screen overflow-hidden">
-			<div className="bg-container-editor-graph relative h-screen overflow-hidden">
+		<div className="json-graph-container relative h-screen w-full overflow-hidden">
+			<div className="bg-container-editor-graph relative h-screen w-full  overflow-hidden">
 				<div
 					className="absolute h-screen w-full overflow-hidden"
 					onContextMenu={(e) => e.preventDefault()}
