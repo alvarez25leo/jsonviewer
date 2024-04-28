@@ -41,14 +41,17 @@ export const StyledForeignObject = styled.foreignObject<{ $isObject?: boolean }>
 	pointer-events: none;
 
 	&.searched {
-		background: rgba(27, 255, 0, 0.1);
-		border: 2px solid ${({ theme }) => theme.TEXT_POSITIVE};
+		background: rgba(10, 233, 138, 0.1);
+		border: 2px solid #0ae98a;
 		border-radius: 2px;
 		box-sizing: border-box;
 	}
 
 	.highlight {
-		background: rgba(255, 214, 0, 0.3);
+		/* background: rgba(255, 214, 0, 0.3); */
+		/* background: rgba(255, 118, 125, 0.3); */
+		/* background: rgba(233, 102, 173, 0.3); */
+		background: rgba(251, 196 ,81, 0.3);
 	}
 
 	.renderVisible {

@@ -1,7 +1,7 @@
 import React from "react"
-// import { ColorSwatch } from "@mantine/core";
 import styled from "styled-components"
 import * as Styled from "./styles"
+import ColorSwatch from "./ColorSwatch"
 
 const StyledRow = styled.span`
 	display: inline-flex;
@@ -30,7 +30,7 @@ export const TextRenderer: React.FC<{ children: string }> = ({ children }) => {
 	if (isColorFormat(children?.replaceAll('"', ""))) {
 		return (
 			<StyledRow>
-				{/* <ColorSwatch size={12} radius={4} mr={4} color={children?.replaceAll('"', "")} /> */}
+                <ColorSwatch size={12} radius={4} color={children?.replaceAll('"', "")} />
 				{children?.replaceAll('"', "")}
 			</StyledRow>
 		)
