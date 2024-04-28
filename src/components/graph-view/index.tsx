@@ -6,6 +6,7 @@ import { Space } from "react-zoomable-ui"
 import GraphCanvasComponent from "./canvas/graph-canvas.component"
 import useFile from "@/store/useFile"
 import useConfig from "@/store/useConfig"
+import { defaultJson } from "@/constants/data/data"
 
 interface GraphViewProps {
 	json: string
@@ -39,7 +40,9 @@ const GraphViewComponent = ({ json }: GraphViewProps) => {
 	}, 300)
 
 	useEffect(() => {
-        if(json === "") return
+		if (json === "") {
+			setContents({ contents: defaultJson, skipUpdate: true })
+		}
 		setContents({ contents: json, skipUpdate: true })
 	}, [json])
 
