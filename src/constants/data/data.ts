@@ -1,27 +1,91 @@
 const sampleJson = Object.freeze({
-	squadName: "Super hero squad",
-	homeTown: "Metro City",
-	formed: 2016,
-	secretBase: "Super tower",
-	active: true,
-	members: [
+	provider: {
+		name: "Netflix",
+		type: "Streaming",
+		established: 1997,
+		headquarters: "Los Gatos, California",
+		popular: true,
+	},
+	categories: [
 		{
-			name: "Molecule Man",
-			age: 29,
-			secretIdentity: "Dan Jukes",
-			powers: ["Radiation resistance", "Turning tiny", "Radiation blast"],
+			genre: "Drama",
+			films: [
+				{
+					title: "The Irishman",
+					releaseYear: 2019,
+					director: {
+						name: "Martin Scorsese",
+						awards: ["Academy Award", "Golden Globe"],
+					},
+					cast: [
+						{
+							actorName: "Robert De Niro",
+							role: "Frank Sheeran",
+							nominated: true,
+						},
+						{
+							actorName: "Al Pacino",
+							role: "Jimmy Hoffa",
+							nominated: true,
+						},
+					],
+				},
+				{
+					title: "Marriage Story",
+					releaseYear: 2019,
+					director: {
+						name: "Noah Baumbach",
+						awards: ["Academy Nominee"],
+					},
+					cast: [
+						{
+							actorName: "Scarlett Johansson",
+							role: "Nicole Barber",
+							nominated: true,
+						},
+						{
+							actorName: "Adam Driver",
+							role: "Charlie Barber",
+							nominated: true,
+						},
+					],
+				},
+			],
 		},
 		{
-			name: "Madame Uppercut",
-			age: 39,
-			secretIdentity: "Jane Wilson",
-			powers: ["Million tonne punch", "Damage resistance", "Superhuman reflexes"],
-		},
-		{
-			name: "Eternal Flame",
-			age: 1000000,
-			secretIdentity: "Unknown",
-			powers: ["Immortality", "Heat Immunity", "Inferno", "Teleportation", "Interdimensional travel"],
+			genre: "Action",
+			films: [
+				{
+					title: "Extraction",
+					releaseYear: 2020,
+					director: {
+						name: "Sam Hargrave",
+						awards: [],
+					},
+					cast: [
+						{
+							actorName: "Chris Hemsworth",
+							role: "Tyler Rake",
+							nominated: false,
+						},
+					],
+				},
+				{
+					title: "6 Underground",
+					releaseYear: 2019,
+					director: {
+						name: "Michael Bay",
+						awards: [],
+					},
+					cast: [
+						{
+							actorName: "Ryan Reynolds",
+							role: "One",
+							nominated: false,
+						},
+					],
+				},
+			],
 		},
 	],
 })
