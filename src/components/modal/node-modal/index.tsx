@@ -18,7 +18,6 @@ export const NodeModal = ({ opened, onClose }: modalProps) => {
 	const nodeData = useGraph((state) => dataToString(state.selectedNode?.text))
 	const path = useGraph((state) => state.selectedNode?.path || "")
 
-	console.log("atomOneDark", JSON.stringify(atomOneDark, null, 2))
 	return (
 		<ModalComponent openModal={opened} title="Code" closeModal={() => onClose()}>
 			<div className="mt-1 text-white opacity-45">JSON Content </div>

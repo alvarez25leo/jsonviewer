@@ -2,6 +2,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage.hooks"
 import useGraph from "@/store/useGraph"
 import useModal from "@/store/useModal"
 import { useEffect, useState } from "react"
+import { SearchInput } from "../search-input"
 
 const ToolbarZoomComponent = () => {
 	const [showPanel] = useLocalStorage<boolean>("showPanel", true)
@@ -29,6 +30,7 @@ const ToolbarZoomComponent = () => {
 			<div className="toolbar-zoom-container relative ">
 				<div></div>
 				<div className="flex gap-x-1">
+                   <SearchInput />
 					<div>
 						<button
 							title="Generate Types"
