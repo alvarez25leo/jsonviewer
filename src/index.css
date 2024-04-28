@@ -160,3 +160,19 @@ dialog:not([open]) {
 		stroke-dashoffset: 10;
 	}
 }
+
+
+
+.button-zoom-list{
+    border-radius: 4px;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.toolbar-zoom-container{
+ background: #fff;
+ border-radius: 4px;
+ padding: 2px;
+ box-shadow: 0 4px 16px #05003812;
+}
