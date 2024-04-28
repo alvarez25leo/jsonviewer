@@ -1,13 +1,10 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage.hooks"
-import useGraph from "@/store/useGraph"
 
 const ButtonPanelShowComponent = () => {
 	const [showPanel, setShowPanel] = useLocalStorage<boolean>("showPanel", true)
-	const zoomIn = useGraph((state) => state.zoomIn)
 
 	const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		zoomIn()
 		setShowPanel(!showPanel)
 	}
 
