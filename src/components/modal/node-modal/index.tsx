@@ -3,6 +3,7 @@ import ModalComponent from "../moda.component"
 import { modalProps } from "@/types"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import atomOneDark from "@/theme/editor.json"
+import CopyComponent from "@/components/copy/copy.component"
 
 const dataToString = (data: any) => {
 	const text = Array.isArray(data) ? Object.fromEntries(data) : data
@@ -21,13 +22,21 @@ export const NodeModal = ({ opened, onClose }: modalProps) => {
 	return (
 		<ModalComponent openModal={opened} title="Code" closeModal={() => onClose()}>
 			<div className="mt-1 text-white opacity-45">JSON Content </div>
-			<div className="mt-2 rounded-md bg-[#1e2229] p-1">
+			<div className="relative mt-2 rounded-md bg-[#1e2229] p-1">
 				<SyntaxHighlighter className="code-editor-preview custom-scrollbar rounded-md" language="json" style={atomOneDark as any}>
 					{nodeData}
 				</SyntaxHighlighter>
+				<div className="absolute right-3 top-3">
+					<CopyComponent value={nodeData} />
+				</div>
 			</div>
 			<div className="mt-2 text-white opacity-45">JSON Path</div>
-			<div className="custom-scrollbar mt-2 overflow-auto rounded-md bg-[#1e2229] p-3 text-[#0ae98a] opacity-80">{path}</div>
+			<div className="relative">
+				<div className="custom-scrollbar mt-2 overflow-auto rounded-md bg-[#1e2229] p-3 text-[#0ae98a] opacity-80">{path}</div>
+				<div className="absolute right-3 top-4">
+					<CopyComponent value={path} />
+				</div>
+			</div>
 		</ModalComponent>
 	)
 }

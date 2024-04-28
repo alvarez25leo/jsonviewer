@@ -5,6 +5,7 @@ import atomOneDark from "@/theme/editor.json"
 import useJson from "@/store/useJson"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { run } from "json_typegen_wasm"
+import CopyComponent from "@/components/copy/copy.component"
 
 enum Language {
 	TypeScript = "typescript",
@@ -95,7 +96,7 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 					<div className="mt-2 text-center text-[#1e2229]">Generating types...</div>
 				</div>
 			) : null}
-			<div className="mt-2 rounded-md bg-[#1e2229] p-1">
+			<div className="mt-2 rounded-md bg-[#1e2229] p-1 relative">
 				<SyntaxHighlighter
 					className="code-editor-preview-type custom-scrollbar rounded-md"
 					language={editorLanguage}
@@ -103,6 +104,9 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 				>
 					{type}
 				</SyntaxHighlighter>
+                <div className="absolute right-3 top-3">
+					<CopyComponent value={type} />
+				</div>
 			</div>
 		</ModalComponent>
 	)
