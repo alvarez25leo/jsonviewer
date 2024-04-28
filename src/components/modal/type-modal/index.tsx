@@ -45,7 +45,7 @@ const typeOptions = [
 export const TypeModal = ({ opened, onClose }: modalProps) => {
 	const getJson = useJson((state) => state.getJson)
 	const [type, setType] = useState("")
-	const [selectedType, setSelectedType] = useState<Language>(Language.TypeScript)
+	const [selectedType] = useState<Language>(Language.TypeScript)
 	const [loading, setLoading] = useState(false)
 
 	const editorLanguage = useMemo(() => {
@@ -53,7 +53,7 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 	}, [selectedType])
 
 	const transformer = useCallback(
-		async ({ value }) => {
+		async ({ value }: { value: any }) => {
 			return run(
 				"Root",
 				value,
@@ -87,6 +87,14 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 			}}
 			closeModal={() => onClose()}
 		>
+			{loading ? (
+				<div>
+					<div className="flex items-center justify-center">
+						<div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-[#1e2229]"></div>
+					</div>
+					<div className="mt-2 text-center text-[#1e2229]">Generating types...</div>
+				</div>
+			) : null}
 			<div className="mt-2 rounded-md bg-[#1e2229] p-1">
 				<SyntaxHighlighter
 					className="code-editor-preview-type custom-scrollbar rounded-md"

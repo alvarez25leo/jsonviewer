@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 const ToolbarZoomComponent = () => {
 	const [showPanel] = useLocalStorage<boolean>("showPanel", true)
-    const setVisible = useModal(state => state.setVisible);
+	const setVisible = useModal((state) => state.setVisible)
 	const zoomIn = useGraph((state) => state.zoomIn)
 	const zoomOut = useGraph((state) => state.zoomOut)
 	const centerView = useGraph((state) => state.centerView)
@@ -30,7 +30,11 @@ const ToolbarZoomComponent = () => {
 				<div></div>
 				<div className="flex gap-x-1">
 					<div>
-						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => setVisible("type")(true)}>
+						<button
+							title="Generate Types"
+							className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center"
+							onClick={() => setVisible("type")(true)}
+						>
 							<svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 16 16" height="20" width="20">
 								<path
 									fillRule="evenodd"
@@ -41,7 +45,11 @@ const ToolbarZoomComponent = () => {
 						</button>
 					</div>
 					<div>
-						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => centerView()}>
+						<button
+							title="Center View"
+							className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center"
+							onClick={() => centerView()}
+						>
 							<svg
 								viewBox="0 0 24 24"
 								aria-hidden="true"
@@ -59,7 +67,11 @@ const ToolbarZoomComponent = () => {
 						</button>
 					</div>
 					<div>
-						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => zoomOut()}>
+						<button
+							title="Zoom Out"
+							className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center"
+							onClick={() => zoomOut()}
+						>
 							<svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
 								<path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
 							</svg>
@@ -67,6 +79,7 @@ const ToolbarZoomComponent = () => {
 					</div>
 					<div>
 						<button
+							title="Zoom 100%"
 							className="button-zoom-list with-text flex h-[44px] w-[44px] items-center justify-center"
 							onClick={() => handleResetZoom()}
 						>
@@ -74,7 +87,11 @@ const ToolbarZoomComponent = () => {
 						</button>
 					</div>
 					<div>
-						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => zoomIn()}>
+						<button
+							title="Zoom In"
+							className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center"
+							onClick={() => zoomIn()}
+						>
 							<svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
 								<path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 							</svg>
