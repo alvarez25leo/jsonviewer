@@ -30,14 +30,13 @@ const ToolbarZoomComponent = () => {
 					<div>
 						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => centerView()}>
 							<svg
-								width="1em"
-								height="1em"
 								viewBox="0 0 24 24"
-								className="icon-SPAGX icon_large-LrSiK"
 								aria-hidden="true"
 								data-testid="svg-icon"
 								focusable="false"
 								role="presentation"
+                                width={20}
+                                height={20}
 							>
 								<path
 									fill="currentColor"
@@ -54,7 +53,7 @@ const ToolbarZoomComponent = () => {
 						</button>
 					</div>
 					<div>
-						<button className="button-zoom-list flex h-[44px] w-[44px] items-center justify-center" onClick={() => handleResetZoom()}>
+						<button className="button-zoom-list with-text flex h-[44px] w-[44px] items-center justify-center" onClick={() => handleResetZoom()}>
 							{Math.round(zoomFactor * 100)}%
 						</button>
 					</div>

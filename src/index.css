@@ -168,7 +168,9 @@ dialog:not([open]) {
 	color: #fff;
 	opacity: 0.6;
 }
-
+.button-zoom-list.with-text {
+    font-size: 14px;
+}
 .button-zoom-list:hover {
 	opacity: 1;
 	background: rgba(255, 255, 255, 0.1);
