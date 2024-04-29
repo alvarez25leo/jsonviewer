@@ -43,7 +43,7 @@ const GraphCanvasComponent = () => {
 
 	return (
 		<Canvas
-			className="draw-graph"
+			className="draw-graph h-screen w-full"
 			onLayoutChange={onLayoutChange}
 			node={(p) => <CustomNode {...p} />}
 			edge={(p) => <CustomEdge className="edge" {...p} />}
