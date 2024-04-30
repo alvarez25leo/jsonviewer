@@ -7,7 +7,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            bg:{
+                editor: '#0d121c',
+            }
+        }
+    },
   },
   plugins: [],
 };

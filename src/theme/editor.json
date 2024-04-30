@@ -4,7 +4,7 @@
         "overflowX": "auto",
         "padding": "0.5em",
         "color": "#abb2bf",
-        "background": "#1e2229",
+        "background": "#0d121c",
         "fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace, Consolas, 'Courier New', monospace"
     },
     "hljs-comment": {

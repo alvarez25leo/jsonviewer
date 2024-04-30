@@ -46,7 +46,7 @@ function App() {
 	return (
 		<>
 			<div
-				className="bg-[#23272e]"
+				className="bg-editor"
 				style={{
 					height: "100vh",
 					width: "100vw",

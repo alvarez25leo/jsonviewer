@@ -93,19 +93,21 @@ export const TypeModal = ({ opened, onClose }: modalProps) => {
 					<div className="flex items-center justify-center">
 						<div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-[#1e2229]"></div>
 					</div>
-					<div className="mt-2 text-center text-[#1e2229]">Generating types...</div>
+					<div className="mt-2 text-center text-[#0d121c]">Generating types...</div>
 				</div>
 			) : null}
 			<div className="relative mt-2 rounded-md bg-[#1e2229] p-1">
-				<SyntaxHighlighter
-					className="code-editor-preview-type custom-scrollbar rounded-md"
-					language={editorLanguage}
-					style={atomOneDark as any}
-				>
-					{type}
-				</SyntaxHighlighter>
-				<div className="absolute right-3 top-3">
-					<CopyComponent value={type} />
+				<div className="relative  rounded-md bg-[#0d121c] p-1">
+					<SyntaxHighlighter
+						className="code-editor-preview-type custom-scrollbar rounded-md"
+						language={editorLanguage}
+						style={atomOneDark as any}
+					>
+						{type}
+					</SyntaxHighlighter>
+					<div className="absolute right-3 top-3">
+						<CopyComponent value={type} />
+					</div>
 				</div>
 			</div>
 		</ModalComponent>

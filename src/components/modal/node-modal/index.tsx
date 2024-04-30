@@ -32,7 +32,9 @@ export const NodeModal = ({ opened, onClose }: modalProps) => {
 			</div>
 			<div className="mt-2 text-white opacity-45">JSON Path</div>
 			<div className="relative">
-				<div className="custom-scrollbar mt-2 overflow-auto rounded-md bg-[#1e2229] p-3 text-[#0ae98a] opacity-80">{path}</div>
+				<div className="custom-scrollbar mt-2  rounded-md bg-[#1e2229] p-1 text-[#0ae98a] opacity-80">
+					<div className="bg-[#0d121c] rounded-md py-2 overflow-auto">{path}</div>
+				</div>
 				<div className="absolute right-3 top-4">
 					<CopyComponent value={path} />
 				</div>
