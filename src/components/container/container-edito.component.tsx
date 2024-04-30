@@ -125,8 +125,8 @@ const ContainerEditorComponent = () => {
 							{languagesList.map((languageName) => (
 								<button
 									key={languageName}
-									className={`pointer-events-auto flex items-center justify-center rounded-md bg-[#282c34] px-3 py-[2px] text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5] ${
-										language === languageName ? "bg-[#4d5565] text-[#cccccc]" : ""
+									className={`pointer-events-auto flex items-center justify-center rounded-md bg-[#2c3437] px-3 py-[2px] text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5] ${
+										language === languageName ? "bg-[#545e71] text-[#cccccc]" : ""
 									}`}
 									onClick={() => setLanguage(languageName)}
 								>
@@ -143,7 +143,7 @@ const ContainerEditorComponent = () => {
 					<div className="mt-1 flex gap-x-2">
 						<button
 							onClick={handleCopyCode}
-							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#282c34] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
+							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
 						>
 							<div>
 								<svg viewBox="0 0 24 24" width={18} height={18}>
@@ -156,7 +156,7 @@ const ContainerEditorComponent = () => {
 							<div className="flex items-center justify-center">Copy</div>
 						</button>
 						<button
-							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#282c34] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
+							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
 							onClick={handleFormatCode}
 						>
 							<div>
@@ -177,14 +177,14 @@ const ContainerEditorComponent = () => {
 							<div className="flex items-center justify-center">Format</div>
 						</button>
 						<button
-							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#282c34] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
+							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
 							onClick={handleClearEditor}
 						>
 							<div></div>
 							<div className="flex items-center justify-center">Clean</div>
 						</button>
 						<button
-							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#282c34] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
+							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
 							onClick={handleMinifyEditor}
 						>
 							<div></div>

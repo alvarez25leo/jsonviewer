@@ -5,12 +5,12 @@ interface TabJsonGraphProps {
 }
 const TabJsonGraphComponent: React.FC<TabJsonGraphProps> = ({ currentTab, handleTabChange, language }) => {
 	const getClassNames = (tab: "code" | "graph" | "compare") => {
-		return `flex justify-center items-center gap-x-1 px-2 py-1 rounded-md text-[#cccccc80] bg-[#282c34] w-full ${
-			currentTab === tab ? " bg-[#404754] text-[#cccccc]" : ""
+		return `flex justify-center items-center gap-x-1 px-2 py-1 rounded-md text-[#cccccc80] bg-[#2c3437] w-full ${
+			currentTab === tab ? " bg-[rgba(255,255,255,.1)] text-[#cccccc]" : ""
 		}`
 	}
 	return (
-		<div className="rounded-md bg-[#282c34] p-1 shadow-sm">
+		<div className="rounded-md bg-[#2c3437] p-1 shadow-sm">
 			<ul
 				className="grid gap-1 text-sm font-medium text-[#000] dark:text-gray-400 "
 				style={{
