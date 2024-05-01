@@ -48,7 +48,7 @@
             "form_factor": "narrow"
         }
     ],
-    "start_url": ".",
+    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#0d121c",
