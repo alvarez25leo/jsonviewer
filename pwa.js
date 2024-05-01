@@ -1,6 +1,6 @@
-const fs = require('fs');
-const crypto = require('crypto');
-const glob = require('glob');
+import { writeFile } from 'fs';
+import { randomBytes } from 'crypto';
+import glob from 'glob';
 
 const manifestFiles = [];
 const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.svg|\.ttf|\.ico|\.eot|\.gif|\.css)$/i;
@@ -8,8 +8,7 @@ const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.svg|\.ttf|\.ico|\.e
 const files = glob.sync('dist/**/**/**/**/**/*');
 
 function hashFileVerification(length) {
-	return crypto
-		.randomBytes(Math.ceil(length / 2))
+	return randomBytes(Math.ceil(length / 2))
 		.toString('hex')
 		.slice(0, length);
 }
@@ -102,7 +101,7 @@ workbox.routing.registerRoute(
 )
 `;
 
-fs.writeFile('dist/service-worker.js', workboxSW, 'utf-8', function (error) {
+writeFile('dist/service-worker.js', workboxSW, 'utf-8', function (error) {
 	if (error) return console.log(error);
 	console.log(`${manifestFiles.length} files were generated in the sw.js file`);
 });
