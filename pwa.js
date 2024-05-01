@@ -3,7 +3,7 @@ import { randomBytes } from 'crypto';
 import glob from 'glob';
 
 const manifestFiles = [];
-const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.svg|\.ttf|\.ico|\.eot|\.gif|\.css)$/i;
+const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.html|\.svg|\.ttf|\.ico|\.eot|\.gif|\.css)$/i;
 
 const files = glob.sync('dist/**/**/**/**/**/*');
 
@@ -86,13 +86,14 @@ workbox.routing.registerRoute(
     'GET'
 )
 
-workbox.routing.registerRoute(/\.(?:woff2)$/,
+workbox.routing.registerRoute(
+    /\.(?:woff|woff2|eot|ttf|otf)$/,
     new workbox.strategies.CacheFirst({
-        cacheName: 'cacheFontsCustom',
+        cacheName: 'custom-fonts-cache',
         plugins: [
             new workbox.expiration.ExpirationPlugin({
-                maxAgeSeconds: 60 * 60 * 24 * 365,
-                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+                maxEntries: 20,
             }),
         ],
     }),
