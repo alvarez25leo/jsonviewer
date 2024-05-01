@@ -7,6 +7,19 @@ import "./css/fonts.css"
 import { ThemeProvider } from "styled-components"
 import { darkTheme } from "./constants/theme.ts"
 
+if('serviceWorker' in navigator){
+    const pathSw = `${window.location.origin}/service-worker.js`
+    console.log('pathSw', pathSw)
+    navigator.serviceWorker
+        .register(pathSw)
+        .then(() => {
+            console.log('SW registered: ')
+        })
+        .catch((e) => {
+            console.log('SW registration failed: ', e)
+        })
+}
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<MittProvider>

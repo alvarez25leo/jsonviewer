@@ -8,6 +8,7 @@
     "build": "tsc && vite build && node pwa.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --port 30089",
+    "start": "vite preview --port 30089",
     "format": "prettier --write src",
     "format:check": "prettier --check src",
     "pwa": "node pwa.js"
