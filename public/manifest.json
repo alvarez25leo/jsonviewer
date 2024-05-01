@@ -1,0 +1,43 @@
+{
+    "short_name": "JsonTools ",
+    "name": "JsonTools ",
+    "description": "JsonTools offers advanced JSON editing, formatting, and validation services. Optimize your data handling with our user-friendly JSON tools available online.",
+    "lang": "es",
+    "categories": ["technology", "JSON", "JSON editor", "JSON validator", "JSON formatter", "JSON tools", "online JSON editor"],
+    "icons": [{
+            "src": "logos/512-512.png",
+            "sizes": "512x512",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logos/192-192.png",
+            "sizes": "192x192",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logos/144-144.png",
+            "sizes": "144x144",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logos/96-96.png",
+            "sizes": "96x96",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logos/72-72.png",
+            "sizes": "72x72",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logos/48-48.png",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#0043C1",
+    "background_color": "#ffffff"
+}
