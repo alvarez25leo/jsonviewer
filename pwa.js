@@ -152,12 +152,11 @@ workbox.routing.registerRoute(
         ],
     })
 )
-
 `;
 
 writeFile('dist/sw.js', workboxSW, 'utf-8', function (error) {
 	if (error) return console.log(error);
-	console.log(`${manifestFiles.length} files were generated in the sw.js file`);
+	console.log(`${manifestFiles.length} files were generated in the sw.js file in dist`);
 });
 
 writeFile('public/sw.js', workboxSW, 'utf-8', function (error) {
