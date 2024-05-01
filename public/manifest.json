@@ -35,7 +35,20 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/",
+    "screenshots": [{
+            "src": "screenshot/screenshot-wide.png",
+            "sizes": "1024x768",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "screenshot/screenshot-narrow.png",
+            "sizes": "320x640",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ],
+    "start_url": ".",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#0d121c",
