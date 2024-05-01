@@ -7,37 +7,37 @@
     "icons": [{
             "src": "logos/512-512.png",
             "sizes": "512x512",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logos/192-192.png",
             "sizes": "192x192",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logos/144-144.png",
             "sizes": "144x144",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logos/96-96.png",
             "sizes": "96x96",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logos/72-72.png",
             "sizes": "72x72",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logos/48-48.png",
             "sizes": "48x48",
-            "type": "image/x-icon"
+            "type": "image/png"
         }
     ],
     "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
-    "theme_color": "#0043C1",
-    "background_color": "#ffffff"
+    "theme_color": "#0d121c",
+    "background_color": "#0d121c"
 }
