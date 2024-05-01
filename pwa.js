@@ -3,7 +3,7 @@ import { randomBytes } from 'crypto';
 import glob from 'glob';
 
 const manifestFiles = [];
-const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.html|\.svg|\.ttf|\.ico|\.eot|\.gif|\.css)$/i;
+const rejExFiles = /(\.js|\.woff|\.woff2|\.jpg|\.png|\.txt|\.html|\.wasm|\.svg|\.ttf|\.ico|\.eot|\.gif|\.css)$/i;
 
 const files = glob.sync('dist/**/**/**/**/**/*');
 
