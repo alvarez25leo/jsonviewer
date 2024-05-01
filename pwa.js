@@ -99,37 +99,38 @@ workbox.routing.registerRoute(
       ],
     })
 )
+
+workbox.routing.registerRoute(
+    ({ request }) =>     request.destination === 'style' ||     request.destination === 'script' ||     request.destination === 'worker',
+    new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'static-resources',
+        plugins: [
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [200],
+            }),
+            new workbox.expiration.ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+            }),
+        ],
+    }),
+)
+
+workbox.routing.registerRoute(
+    ({request}) => request.destination === 'document',
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'html-cache',
+        plugins: [
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [200],
+            }),
+            new workbox.expiration.ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+            }),
+        ],
+    })
+)
+
 `;
-
-// workbox.routing.registerRoute(
-//     ({ request }) =>     request.destination === 'style' ||     request.destination === 'script' ||     request.destination === 'worker',
-//     new workbox.strategies.StaleWhileRevalidate({
-//         cacheName: 'static-resources',
-//         plugins: [
-//             new workbox.cacheableResponse.CacheableResponsePlugin({
-//                 statuses: [200],
-//             }),
-//             new workbox.expiration.ExpirationPlugin({
-//                 maxAgeSeconds: 60 * 60 * 24 * 365,
-//             }),
-//         ],
-//     }),
-// )
-
-// workbox.routing.registerRoute(
-//     ({request}) => request.destination === 'document',
-//     new workbox.strategies.NetworkFirst({
-//         cacheName: 'html-cache',
-//         plugins: [
-//             new workbox.cacheableResponse.CacheableResponsePlugin({
-//                 statuses: [200],
-//             }),
-//             new workbox.expiration.ExpirationPlugin({
-//                 maxAgeSeconds: 60 * 60 * 24 * 365,
-//             }),
-//         ],
-//     })
-// )
 
 writeFile('dist/sw.js', workboxSW, 'utf-8', function (error) {
 	if (error) return console.log(error);
