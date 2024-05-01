@@ -100,22 +100,36 @@ workbox.routing.registerRoute(
     })
 )
 
-// Agregar rutas para otros archivos estáticos esenciales para el funcionamiento offline
 workbox.routing.registerRoute(
-    ({request}) => ['style', 'script', 'worker'].includes(request.destination),
+    ({ request }) =>     request.destination === 'style' ||     request.destination === 'script' ||     request.destination === 'worker',
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'static-resources',
-    })
-);
+        plugins: [
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [200],
+            }),
+            new workbox.expiration.ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+            }),
+        ],
+    }),
+)
 
 
-// Asegurarse de que las peticiones para páginas sean gestionadas primero por la red
 workbox.routing.registerRoute(
     ({request}) => request.destination === 'document',
     new workbox.strategies.NetworkFirst({
         cacheName: 'html-cache',
+        plugins: [
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [200],
+            }),
+            new workbox.expiration.ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+            }),
+        ],
     })
-);
+)
 `;
 
 writeFile('dist/service-worker.js', workboxSW, 'utf-8', function (error) {
