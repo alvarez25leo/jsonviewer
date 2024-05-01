@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components"
 import { darkTheme } from "./constants/theme.ts"
 
 if('serviceWorker' in navigator){
-    const pathSw = `${window.location.origin}/service-worker.js`
+    const pathSw = `${window.location.origin}/sw.js`
     console.log('pathSw', pathSw)
     window.addEventListener('load', () => {
         navigator.serviceWorker.register(pathSw)
