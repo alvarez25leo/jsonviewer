@@ -85,6 +85,20 @@ workbox.routing.registerRoute(
     }),
     'GET'
 )
+
+workbox.routing.registerRoute(/\.(?:woff2)$/,
+    new workbox.strategies.CacheFirst({
+        cacheName: 'cacheFontsCustom',
+        plugins: [
+            new workbox.expiration.ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+                maxEntries: 30,
+            }),
+        ],
+    }),
+    'GET'
+)
+
 workbox.routing.registerRoute(
     ({url}) => url.origin === 'https://fonts.gstatic.com',
     new workbox.strategies.CacheFirst({
@@ -116,15 +130,24 @@ workbox.routing.registerRoute(
 )
 
 workbox.routing.registerRoute(
+    ({ request }) => request.mode === 'navigate',
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'pages-app-manager',
+        plugins: [
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [200],
+            }),
+        ],
+    }),
+)
+
+workbox.routing.registerRoute(
     ({request}) => request.destination === 'document',
     new workbox.strategies.NetworkFirst({
         cacheName: 'html-cache',
         plugins: [
             new workbox.cacheableResponse.CacheableResponsePlugin({
                 statuses: [200],
-            }),
-            new workbox.expiration.ExpirationPlugin({
-                maxAgeSeconds: 60 * 60 * 24 * 365,
             }),
         ],
     })
