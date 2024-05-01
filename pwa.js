@@ -100,6 +100,7 @@ workbox.routing.registerRoute(
     })
 )
 
+/**
 workbox.routing.registerRoute(
     ({ request }) =>     request.destination === 'style' ||     request.destination === 'script' ||     request.destination === 'worker',
     new workbox.strategies.StaleWhileRevalidate({
@@ -114,8 +115,9 @@ workbox.routing.registerRoute(
         ],
     }),
 )
+*/
 
-
+/**
 workbox.routing.registerRoute(
     ({request}) => request.destination === 'document',
     new workbox.strategies.NetworkFirst({
@@ -130,6 +132,7 @@ workbox.routing.registerRoute(
         ],
     })
 )
+*/
 `;
 
 writeFile('dist/service-worker.js', workboxSW, 'utf-8', function (error) {
