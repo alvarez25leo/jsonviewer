@@ -105,3 +105,9 @@ writeFile('dist/service-worker.js', workboxSW, 'utf-8', function (error) {
 	if (error) return console.log(error);
 	console.log(`${manifestFiles.length} files were generated in the sw.js file`);
 });
+
+writeFile('public/service-worker.js', workboxSW, 'utf-8', function (error) {
+	if (error) return console.log(error);
+	console.log(`${manifestFiles.length} files were generated in the sw.js file in public`);
+});
+

@@ -10,14 +10,15 @@ import { darkTheme } from "./constants/theme.ts"
 if('serviceWorker' in navigator){
     const pathSw = `${window.location.origin}/service-worker.js`
     console.log('pathSw', pathSw)
-    navigator.serviceWorker
-        .register(pathSw)
-        .then(() => {
-            console.log('SW registered: ')
-        })
-        .catch((e) => {
-            console.log('SW registration failed: ', e)
-        })
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(pathSw)
+            .then((reg) => {
+                console.log('Service worker registered.', reg)
+            })
+            .catch((err) => {
+                console.error('Service worker registration failed.', err)
+            })
+    })
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
