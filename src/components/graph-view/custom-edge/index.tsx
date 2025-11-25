@@ -2,7 +2,8 @@ import { memo } from "react"
 import { EdgeProps, Edge } from "reaflow"
 
 const CustomEdgeWrapper = (props: EdgeProps) => {
-	return <Edge containerClassName={`edge-${props.id}`} {...props} />
+	const { id, ...rest } = props as any
+	return <Edge containerClassName={`edge-${id}`} {...rest} id={id} />
 }
 
 export const CustomEdge = memo(CustomEdgeWrapper)

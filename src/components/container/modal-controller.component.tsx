@@ -11,13 +11,19 @@ const modalComponents: ModalComponent[] = [
 
 const ModalControllerComponent = () => {
 	const setVisible = useModal((state) => state.setVisible)
-	const modalStates = useModal((state) => modalComponents.map((modal) => state[modal.key]))
+	const nodeOpened = useModal((state) => state.node)
+	const typeOpened = useModal((state) => state.type)
+
+	const statesMap: Record<string, boolean> = {
+		node: nodeOpened,
+		type: typeOpened,
+	}
 
 	return (
 		<>
-			{modalComponents.map(({ key, component }, index) => {
+			{modalComponents.map(({ key, component }) => {
 				const ModalComponent = component
-				const opened = modalStates[index]
+				const opened = statesMap[key]
 
 				return <ModalComponent key={key} opened={opened} onClose={() => setVisible(key)(false)} />
 			})}
