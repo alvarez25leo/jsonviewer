@@ -36,7 +36,7 @@ const EditorGraphPage = () => {
             <PanelGroup direction="horizontal" onLayout={handleLayout}>
                 <Panel defaultSize={sizes[0]} minSize={20}>
                     <div style={{ height: "100%", borderRight: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
-                        <JsonEditorComponent language={"json"} />
+                        <JsonEditorComponent language={"json"} showSidebar={false} />
                     </div>
                 </Panel>
 

@@ -14,12 +14,18 @@ import useFile from "@/store/useFile"
 
 interface JsonEditorComponentProps {
 	language: languagesType
+	showSidebar?: boolean
 }
 
-const JsonEditorComponent = ({ language }: JsonEditorComponentProps) => {
+const JsonEditorComponent = ({ language, showSidebar = true }: JsonEditorComponentProps) => {
 	const [codeValues, setCodeValues] = useLocalStorage<LanguageValue[]>("codeEditorValues", [])
 	const editorRef = useRef<Editor.IStandaloneCodeEditor | null>(null)
 	const { emitter } = useMitt()
+
+    const monacoOptions = {
+        ...editorOptions,
+        minimap: showSidebar ? editorOptions.minimap : { enabled: false },
+    };
 
 	const handleEditorDidMount: OnMount = (editor) => {
 		editorRef.current = editor
@@ -153,7 +159,7 @@ const JsonEditorComponent = ({ language }: JsonEditorComponentProps) => {
 			defaultLanguage={language}
 			defaultValue={decode(codeValues.find((c) => c.language === language)?.value || "") || ""}
 			theme="OneDarkPro"
-			options={editorOptions}
+			options={monacoOptions}
 			onMount={handleEditorDidMount}
 			beforeMount={handleEditorWillMount}
 			onValidate={handleEditorValidation}
