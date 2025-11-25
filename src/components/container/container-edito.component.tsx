@@ -142,6 +142,13 @@ const ContainerEditorComponent = () => {
 					</div>
 					<div className="mt-1 flex gap-x-2">
 						<button
+							className="pointer-events-auto flex items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
+							onClick={() => window.open(`${window.location.origin}/editor-graph`, "_blank")}
+						>
+							<div className="flex items-center justify-center">Open Split View</div>
+						</button>
+
+						<button
 							onClick={handleCopyCode}
 							className="pointer-events-auto flex flex-1 items-center justify-center gap-x-1 rounded-md bg-[#2c3437] px-2 py-1 text-[0.8125rem] font-semibold leading-5 text-[#cccccc80] hover:bg-[#4d5565] hover:text-[#c5c5c5]"
 						>
