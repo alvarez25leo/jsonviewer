@@ -17,6 +17,8 @@ interface ModalActions {
 	setSchemaValidator: (visible: boolean) => void
 	setDiff: (visible: boolean) => void
 	setShortcuts: (visible: boolean) => void
+	setTemplates: (visible: boolean) => void
+	setSaveTemplate: (visible: boolean) => void
 }
 
 const initialStates: ModalState = {
@@ -42,6 +44,8 @@ const initialStates: ModalState = {
 	schemaValidator: false,
 	diff: false,
 	shortcuts: false,
+	templates: false,
+	saveTemplate: false,
 }
 
 const createModalSetter = (set: (partial: Partial<ModalState>) => void, modal: Modal) => (visible: boolean) => {
@@ -64,6 +68,8 @@ const useModal = create<ModalState & ModalActions>()((set) => ({
 	setSchemaValidator: createModalSetter(set, "schemaValidator"),
 	setDiff: createModalSetter(set, "diff"),
 	setShortcuts: createModalSetter(set, "shortcuts"),
+	setTemplates: createModalSetter(set, "templates"),
+	setSaveTemplate: createModalSetter(set, "saveTemplate"),
 }))
 
 export default useModal

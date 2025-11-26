@@ -14,6 +14,8 @@ export { JSONPathModal } from "../components/modal/jsonpath-modal"
 export { SchemaValidatorModal } from "../components/modal/schema-validator-modal"
 export { DiffModal } from "../components/modal/diff-modal"
 export { ShortcutsModal } from "../components/modal/shortcuts-modal"
+export { TemplatesModal } from "../components/modal/templates-modal"
+export { SaveTemplateModal } from "../components/modal/save-template-modal"
 
 type Modal =
 	| "clear"
@@ -38,5 +40,7 @@ type Modal =
 	| "schemaValidator"
 	| "diff"
 	| "shortcuts"
+	| "templates"
+	| "saveTemplate"
 
 export type { Modal }

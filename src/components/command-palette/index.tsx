@@ -32,6 +32,8 @@ export const CommandPalette = () => {
 		setSchemaValidator,
 		setDiff,
 		setShortcuts,
+		setTemplates,
+		setSaveTemplate,
 	} = useModal()
 	const { setJson } = useJson()
 	const { getContents } = useFile()
@@ -39,6 +41,24 @@ export const CommandPalette = () => {
 
 	// Define commands
 	const commands: Command[] = [
+		// Templates
+		{
+			id: "templates",
+			label: "Browse Templates...",
+			shortcut: "Ctrl+Shift+T",
+			category: "Templates",
+			action: () => setTemplates(true),
+			icon: "📚",
+		},
+		{
+			id: "save-template",
+			label: "Save as Template...",
+			shortcut: "Ctrl+Shift+S",
+			category: "Templates",
+			action: () => setSaveTemplate(true),
+			icon: "💾",
+		},
+
 		// File operations
 		{
 			id: "format",

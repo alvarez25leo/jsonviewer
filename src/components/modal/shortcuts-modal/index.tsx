@@ -17,6 +17,13 @@ const shortcutGroups: ShortcutGroup[] = [
 		],
 	},
 	{
+		title: "Templates",
+		shortcuts: [
+			{ keys: ["Ctrl", "Shift", "T"], description: "Browse templates" },
+			{ keys: ["Ctrl", "Shift", "S"], description: "Save as template" },
+		],
+	},
+	{
 		title: "Editor",
 		shortcuts: [
 			{ keys: ["Ctrl", "Z"], description: "Undo" },

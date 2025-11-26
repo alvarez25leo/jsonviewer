@@ -46,10 +46,17 @@ export const FeaturesSidebar: React.FC = () => {
 		setSchemaValidator,
 		setDiff,
 		setShortcuts,
+		setTemplates,
+		setSaveTemplate,
 	} = useModal()
 
 	return (
 		<div className="flex flex-col">
+			<FeatureGroup title="Templates">
+				<FeatureButton icon="📚" label="Browse Templates" onClick={() => setTemplates(true)} shortcut="Ctrl+Shift+T" />
+				<FeatureButton icon="💾" label="Save as Template" onClick={() => setSaveTemplate(true)} shortcut="Ctrl+Shift+S" />
+			</FeatureGroup>
+
 			<FeatureGroup title="Export">
 				<FeatureButton icon="📤" label="Export JSON" onClick={() => setExport(true)} shortcut="Ctrl+E" />
 			</FeatureGroup>

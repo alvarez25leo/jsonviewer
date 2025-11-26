@@ -16,6 +16,8 @@ const modalComponents: ModalComponent[] = [
 	{ key: "schemaValidator", component: Modals.SchemaValidatorModal },
 	{ key: "diff", component: Modals.DiffModal },
 	{ key: "shortcuts", component: Modals.ShortcutsModal },
+	{ key: "templates", component: Modals.TemplatesModal },
+	{ key: "saveTemplate", component: Modals.SaveTemplateModal },
 ]
 
 const ModalControllerComponent = () => {
@@ -31,6 +33,8 @@ const ModalControllerComponent = () => {
 	const schemaValidatorOpened = useModal((state) => state.schemaValidator)
 	const diffOpened = useModal((state) => state.diff)
 	const shortcutsOpened = useModal((state) => state.shortcuts)
+	const templatesOpened = useModal((state) => state.templates)
+	const saveTemplateOpened = useModal((state) => state.saveTemplate)
 
 	const statesMap: Record<string, boolean> = {
 		node: nodeOpened,
@@ -44,6 +48,8 @@ const ModalControllerComponent = () => {
 		schemaValidator: schemaValidatorOpened,
 		diff: diffOpened,
 		shortcuts: shortcutsOpened,
+		templates: templatesOpened,
+		saveTemplate: saveTemplateOpened,
 	}
 
 	return (
