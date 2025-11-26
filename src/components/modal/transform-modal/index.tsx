@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react"
 import ModalComponent from "../moda.component"
 import { modalProps } from "@/types"
+import useFile from "@/store/useFile"
 import useJson from "@/store/useJson"
 import { flattenJson, unflattenJson, sortJsonKeys, filterJson, mergeJsonObjects } from "@/lib/utils/transforms"
 import { toast } from "sonner"
@@ -16,7 +17,8 @@ const transformOptions: { value: TransformType; label: string; description: stri
 ]
 
 export const TransformModal = ({ opened, onClose }: modalProps) => {
-	const { getJson, setJson } = useJson()
+	const getContents = useFile((state) => state.getContents)
+	const setJson = useJson((state) => state.setJson)
 	const [selectedTransform, setSelectedTransform] = useState<TransformType>("flatten")
 	const [delimiter, setDelimiter] = useState(".")
 	const [filterPath, setFilterPath] = useState("$..*")
@@ -26,7 +28,7 @@ export const TransformModal = ({ opened, onClose }: modalProps) => {
 
 	const handlePreview = useCallback(() => {
 		try {
-			const jsonStr = getJson()
+			const jsonStr = getContents()
 			const json = JSON.parse(jsonStr)
 			let result: unknown
 
@@ -56,7 +58,7 @@ export const TransformModal = ({ opened, onClose }: modalProps) => {
 			setError(`Error: ${err}`)
 			setPreview("")
 		}
-	}, [getJson, selectedTransform, delimiter, filterPath, mergeJsonInput])
+	}, [getContents, selectedTransform, delimiter, filterPath, mergeJsonInput])
 
 	const handleApply = () => {
 		if (!preview) {

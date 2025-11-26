@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react"
 import ModalComponent from "../moda.component"
 import { modalProps } from "@/types"
-import useJson from "@/store/useJson"
+import useFile from "@/store/useFile"
 import { queryJsonPath, parseJsonPath } from "@/lib/utils/jsonpath"
 import CopyComponent from "@/components/copy/copy.component"
 import { toast } from "sonner"
@@ -20,7 +20,7 @@ const exampleQueries = [
 ]
 
 export const JSONPathModal = ({ opened, onClose }: modalProps) => {
-	const getJson = useJson((state) => state.getJson)
+	const getContents = useFile((state) => state.getContents)
 	const [query, setQuery] = useState("$..*")
 	const [result, setResult] = useState("")
 	const [pathInfo, setPathInfo] = useState<{ paths: string[]; values: unknown[] } | null>(null)
@@ -28,7 +28,7 @@ export const JSONPathModal = ({ opened, onClose }: modalProps) => {
 
 	const handleQuery = useCallback(() => {
 		try {
-			const jsonStr = getJson()
+			const jsonStr = getContents()
 			const json = JSON.parse(jsonStr)
 
 			const queryResult = queryJsonPath(json, query)
@@ -42,7 +42,7 @@ export const JSONPathModal = ({ opened, onClose }: modalProps) => {
 			setResult("")
 			setPathInfo(null)
 		}
-	}, [getJson, query])
+	}, [getContents, query])
 
 	const handleExampleClick = (exampleQuery: string) => {
 		setQuery(exampleQuery)

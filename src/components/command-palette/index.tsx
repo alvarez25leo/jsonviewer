@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react"
 import useModal from "@/store/useModal"
 import useJson from "@/store/useJson"
+import useFile from "@/store/useFile"
 import useHistory from "@/store/useHistory"
 import { toast } from "sonner"
 
@@ -32,7 +33,8 @@ export const CommandPalette = () => {
 		setDiff,
 		setShortcuts,
 	} = useModal()
-	const { getJson, setJson } = useJson()
+	const { setJson } = useJson()
+	const { getContents } = useFile()
 	const { undo, redo, canUndo, canRedo } = useHistory()
 
 	// Define commands
@@ -45,7 +47,7 @@ export const CommandPalette = () => {
 			category: "File",
 			action: () => {
 				try {
-					const json = JSON.parse(getJson())
+					const json = JSON.parse(getContents())
 					setJson(JSON.stringify(json, null, 2))
 					toast.success("JSON formatted!")
 				} catch {
@@ -59,7 +61,7 @@ export const CommandPalette = () => {
 			label: "Copy JSON to Clipboard",
 			category: "File",
 			action: () => {
-				navigator.clipboard.writeText(getJson())
+				navigator.clipboard.writeText(getContents())
 				toast.success("Copied to clipboard!")
 			},
 			icon: "📋",
@@ -70,7 +72,7 @@ export const CommandPalette = () => {
 			category: "File",
 			action: () => {
 				try {
-					const json = JSON.parse(getJson())
+					const json = JSON.parse(getContents())
 					setJson(JSON.stringify(json))
 					toast.success("JSON minified!")
 				} catch {

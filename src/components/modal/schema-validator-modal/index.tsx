@@ -1,20 +1,20 @@
 import { useState, useCallback } from "react"
 import ModalComponent from "../moda.component"
 import { modalProps } from "@/types"
-import useJson from "@/store/useJson"
+import useFile from "@/store/useFile"
 import { validateJsonSchema, generateSchemaFromJson, ValidationResult } from "@/lib/utils/schemaValidator"
 import CopyComponent from "@/components/copy/copy.component"
 import { toast } from "sonner"
 
 export const SchemaValidatorModal = ({ opened, onClose }: modalProps) => {
-	const getJson = useJson((state) => state.getJson)
+	const getContents = useFile((state) => state.getContents)
 	const [schema, setSchema] = useState("")
 	const [validationResult, setValidationResult] = useState<ValidationResult | null>(null)
 	const [generatedSchema, setGeneratedSchema] = useState("")
 
 	const handleValidate = useCallback(() => {
 		try {
-			const jsonStr = getJson()
+			const jsonStr = getContents()
 			const json = JSON.parse(jsonStr)
 			const schemaObj = JSON.parse(schema)
 
@@ -38,11 +38,11 @@ export const SchemaValidatorModal = ({ opened, onClose }: modalProps) => {
 				],
 			})
 		}
-	}, [getJson, schema])
+	}, [getContents, schema])
 
 	const handleGenerateSchema = useCallback(() => {
 		try {
-			const jsonStr = getJson()
+			const jsonStr = getContents()
 			const json = JSON.parse(jsonStr)
 			const schemaObj = generateSchemaFromJson(json)
 			const schemaStr = JSON.stringify(schemaObj, null, 2)
@@ -52,7 +52,7 @@ export const SchemaValidatorModal = ({ opened, onClose }: modalProps) => {
 		} catch (err) {
 			toast.error(`Error generating schema: ${err}`)
 		}
-	}, [getJson])
+	}, [getContents])
 
 	const loadSampleSchema = () => {
 		const sampleSchema = {

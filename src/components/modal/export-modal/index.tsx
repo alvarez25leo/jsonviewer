@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react"
 import ModalComponent from "../moda.component"
 import { modalProps } from "@/types"
-import useJson from "@/store/useJson"
+import useFile from "@/store/useFile"
 import { jsonToYaml, jsonToXml, jsonToCsv, jsonToSql, jsonToZodSchema } from "@/lib/utils/converters"
 import CopyComponent from "@/components/copy/copy.component"
 import SyntaxHighlighter from "react-syntax-highlighter"
@@ -19,7 +19,7 @@ const exportOptions: { value: ExportFormat; label: string; lang: string }[] = [
 ]
 
 export const ExportModal = ({ opened, onClose }: modalProps) => {
-	const getJson = useJson((state) => state.getJson)
+	const getContents = useFile((state) => state.getContents)
 	const [selectedFormat, setSelectedFormat] = useState<ExportFormat>("yaml")
 	const [result, setResult] = useState("")
 	const [error, setError] = useState("")
@@ -28,7 +28,7 @@ export const ExportModal = ({ opened, onClose }: modalProps) => {
 
 	const handleConvert = useCallback(() => {
 		try {
-			const jsonStr = getJson()
+			const jsonStr = getContents()
 			const json = JSON.parse(jsonStr)
 			let output = ""
 
@@ -56,7 +56,7 @@ export const ExportModal = ({ opened, onClose }: modalProps) => {
 			setError(`Error: ${err}`)
 			setResult("")
 		}
-	}, [getJson, selectedFormat, tableName, schemaName])
+	}, [getContents, selectedFormat, tableName, schemaName])
 
 	const handleDownload = () => {
 		if (!result) return
