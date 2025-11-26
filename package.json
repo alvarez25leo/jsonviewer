@@ -14,13 +14,19 @@
     "pwa": "node pwa.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@monaco-editor/react": "^4.7.0",
     "@tailwindcss/postcss": "^4.1.17",
+    "ajv": "^8.17.1",
+    "deep-diff": "^1.0.2",
     "emmet-monaco-es": "^5.6.1",
     "js-base64": "^3.7.8",
+    "js-yaml": "^4.1.1",
     "json_typegen_wasm": "^0.7.0",
     "json-2-csv": "^5.5.10",
+    "json-schema": "^0.4.0",
     "jsonc-parser": "^3.3.1",
+    "jsonpath-plus": "^10.3.0",
     "jsonwebtoken": "^9.0.2",
     "lodash.debounce": "^4.0.8",
     "mitt": "^3.0.1",
@@ -39,9 +45,13 @@
     "sonner": "^2.0.7",
     "styled-components": "^6.1.19",
     "use-long-press": "^3.3.0",
+    "yaml": "^2.8.1",
+    "zod": "^4.1.13",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@types/deep-diff": "^1.0.5",
+    "@types/js-yaml": "^4.0.9",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^19.2.7",
     "@types/react-copy-to-clipboard": "^5.0.7",

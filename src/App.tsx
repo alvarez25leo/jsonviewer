@@ -1,5 +1,6 @@
 import "./App.css"
 import ContainerEditorComponent from "@/components/container/container-edito.component"
+import { CommandPalette } from "@/components/command-palette"
 import { Toaster } from "sonner"
 import { loader } from "@monaco-editor/react"
 import * as monaco from "monaco-editor"
@@ -54,6 +55,7 @@ function App() {
 			>
 				<ContainerEditorComponent />
 			</div>
+			<CommandPalette />
 			<Toaster position="bottom-right" />
 		</>
 	)

@@ -1,16 +1,22 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { decode } from "js-base64"
 import { useLocalStorage } from "@/hooks/useLocalStorage.hooks"
 import { useCodeEditor } from "@/hooks/useCodeEditor"
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts"
 import { useMitt } from "@/provider/mitt"
 import { languagesType, tabType } from "@/types"
 import { SUPPORTED_LANGUAGES, BUTTON_STYLES, PANEL_CONFIG } from "@/constants/editor"
 import { CopyIcon, FormatIcon } from "@/components/icons"
+import { FeaturesSidebar } from "@/components/features-sidebar"
+import useModal from "@/store/useModal"
+import useHistory from "@/store/useHistory"
+import useJson from "@/store/useJson"
 import JsonEditorComponent from "../editor/json-editor.component"
 import JsonGraphComponent from "../graph/json-graph.component"
 import DiffEditorComponent from "../editor/diff-editor.component"
 import TabJsonGraphComponent from "../tabs/tab-json-graph.component"
 import ButtonPanelShowComponent from "../buttons/button-panel-show.component"
+import ModalControllerComponent from "./modal-controller.component"
 
 // ============================================================================
 // Types
@@ -79,6 +85,7 @@ const ContainerEditorComponent: React.FC = () => {
 	const [language, setLanguage] = useLocalStorage<languagesType>("languageEditor", "json")
 	const [showPanel] = useLocalStorage<boolean>("showPanel", true)
 	const [keyEditor, setKeyEditor] = useState<number>(0)
+	const [showFeatures, setShowFeatures] = useState<boolean>(true)
 
 	// Hook personalizado para manejar el código
 	const { codeValues, copyCode, clearCode, minifyCode, getDecodedValue } = useCodeEditor({
@@ -87,6 +94,78 @@ const ContainerEditorComponent: React.FC = () => {
 	})
 
 	const { emitter } = useMitt()
+
+	// Modal store
+	const {
+		setExport,
+		setTransform,
+		setHistory,
+		setMockGenerator,
+		setApiImport,
+		setJsonpath,
+		setSchemaValidator,
+		setDiff,
+		setShortcuts,
+	} = useModal()
+
+	// History store
+	const { undo, redo, canUndo, canRedo, addToHistory } = useHistory()
+	const { getJson, setJson } = useJson()
+
+	// ========================================================================
+	// Keyboard Shortcuts
+	// ========================================================================
+
+	useKeyboardShortcuts({
+		onExport: () => setExport(true),
+		onTransform: () => setTransform(true),
+		onMockGenerator: () => setMockGenerator(true),
+		onApiImport: () => setApiImport(true),
+		onJsonPath: () => setJsonpath(true),
+		onSchemaValidator: () => setSchemaValidator(true),
+		onDiff: () => setDiff(true),
+		onHistory: () => setHistory(true),
+		onShortcuts: () => setShortcuts(true),
+		onUndo: () => {
+			if (canUndo()) {
+				const state = undo()
+				if (state) {
+					setJson(state.content)
+					setKeyEditor((prev) => prev + 1)
+				}
+			}
+		},
+		onRedo: () => {
+			if (canRedo()) {
+				const state = redo()
+				if (state) {
+					setJson(state.content)
+					setKeyEditor((prev) => prev + 1)
+				}
+			}
+		},
+	})
+
+	// ========================================================================
+	// Track history on JSON changes
+	// ========================================================================
+
+	useEffect(() => {
+		const handleJsonChange = () => {
+			try {
+				const currentJson = getJson()
+				if (currentJson && currentJson.trim()) {
+					addToHistory(currentJson, "Edit")
+				}
+			} catch {
+				// Ignore invalid JSON
+			}
+		}
+
+		// Debounce history tracking
+		const timeoutId = setTimeout(handleJsonChange, 1000)
+		return () => clearTimeout(timeoutId)
+	}, [keyEditor])
 
 	// ========================================================================
 	// Handlers
@@ -182,7 +261,7 @@ const ContainerEditorComponent: React.FC = () => {
 				</div>
 
 				{/* Sidebar Panel */}
-				<div className="px-1 py-3">
+				<div className="custom-scrollbar flex flex-col overflow-y-auto px-1 py-3" style={{ maxHeight: "100vh" }}>
 					{/* Tabs */}
 					<div className="mb-1">
 						<TabJsonGraphComponent
@@ -212,10 +291,25 @@ const ContainerEditorComponent: React.FC = () => {
 						<ActionButton onClick={handleClearEditor} label="Clean" />
 						<ActionButton onClick={handleMinifyEditor} label="Minify" />
 					</div>
+
+					{/* Features Section */}
+					<div className="mt-4">
+						<div
+							className="mb-2 flex cursor-pointer items-center justify-between"
+							onClick={() => setShowFeatures(!showFeatures)}
+						>
+							<label className="cursor-pointer text-[0.8125rem] font-semibold leading-5 text-[#cccccc80]">
+								Features
+							</label>
+							<span className="text-xs text-gray-500">{showFeatures ? "▼" : "▶"}</span>
+						</div>
+						{showFeatures && <FeaturesSidebar />}
+					</div>
 				</div>
 			</div>
 
 			<ButtonPanelShowComponent />
+			<ModalControllerComponent />
 		</>
 	)
 }
