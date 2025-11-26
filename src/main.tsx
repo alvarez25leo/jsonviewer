@@ -7,9 +7,14 @@ import EditorGraphPage from "./pages/editor-graph.page"
 import "./index.css"
 import "./css/fonts.css"
 // Initialize i18n
-import "./i18n"
+import i18n from "./i18n"
+// Configure Monaco locale based on current language
+import { configureMonacoLocale } from "./config/monaco-locale"
 import { ThemeProvider } from "styled-components"
 import { darkTheme } from "./constants/theme.ts"
+
+// Set Monaco locale before rendering
+configureMonacoLocale(i18n.language)
 
 if ('serviceWorker' in navigator && import.meta.env && import.meta.env.PROD) {
     const pathSw = `${window.location.origin}/sw.js`

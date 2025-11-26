@@ -9,15 +9,20 @@ import { languages, LanguageCode } from "@/i18n"
 export const useLanguage = () => {
 	const { t, i18n } = useTranslation()
 
-	const currentLanguage = i18n.language as LanguageCode
+	const currentLanguage = (i18n.language?.split("-")[0] || "en") as LanguageCode
 
 	const currentLanguageInfo = languages.find((lang) => lang.code === currentLanguage) || languages[0]
 
 	const changeLanguage = useCallback(
 		(langCode: LanguageCode) => {
-			i18n.changeLanguage(langCode)
+			if (langCode !== currentLanguage) {
+				i18n.changeLanguage(langCode)
+				// Reload page to apply Monaco Editor locale change
+				// Monaco locale can only be set before the editor is initialized
+				window.location.reload()
+			}
 		},
-		[i18n]
+		[i18n, currentLanguage]
 	)
 
 	const toggleLanguage = useCallback(() => {
