@@ -1,54 +1,54 @@
-import useGraph from "@/store/useGraph"
-import { useCallback, useEffect } from "react"
-import { useLongPress } from "use-long-press"
-import debounce from "lodash.debounce"
+import { useEffect } from "react"
 import { Space } from "react-zoomable-ui"
-import GraphCanvasComponent from "./canvas/graph-canvas.component"
+import { useGraphInteraction } from "@/hooks/useGraphInteraction"
+import useGraph from "@/store/useGraph"
 import useFile from "@/store/useFile"
-import useConfig from "@/store/useConfig"
 import { defaultJson } from "@/constants/data/data"
+import GraphCanvasComponent from "./canvas/graph-canvas.component"
+
+// ============================================================================
+// Types
+// ============================================================================
 
 interface GraphViewProps {
 	json: string
 }
 
-const GraphViewComponent = ({ json }: GraphViewProps) => {
+// ============================================================================
+// Component
+// ============================================================================
+
+/**
+ * Componente de vista de grafo para visualizar JSON
+ * Proporciona funcionalidades de zoom, pan y navegación
+ */
+const GraphViewComponent: React.FC<GraphViewProps> = ({ json }) => {
+	// Store actions
 	const setViewPort = useGraph((state) => state.setViewPort)
-	const viewPort = useGraph((state) => state.viewPort)
-	const gesturesEnabled = useConfig((state) => state.gesturesEnabled)
 	const setContents = useFile((state) => state.setContents)
 
-	const callback = useCallback(() => {
-		const canvas = document.querySelector(".draw-graph") as HTMLDivElement | null
-		canvas?.classList.add("dragging")
-	}, [])
+	// Custom hook para interacciones
+	const { bindLongPress, blurOnClick, debouncedOnZoomChange, gesturesEnabled } = useGraphInteraction()
 
-	const bindLongPress = useLongPress(callback, {
-		threshold: 150,
-		onFinish: () => {
-			const canvas = document.querySelector(".draw-graph") as HTMLDivElement | null
-			canvas?.classList.remove("dragging")
-		},
-	})
+	// ========================================================================
+	// Effects
+	// ========================================================================
 
-	const blurOnClick = useCallback(() => {
-		if ("activeElement" in document) (document.activeElement as HTMLElement)?.blur()
-	}, [])
-
-	const debouncedOnZoomChangeHandler = debounce(() => {
-		setViewPort(viewPort!)
-	}, 300)
-
+	/**
+	 * Sincronizar el contenido JSON con el store
+	 */
 	useEffect(() => {
-		if (json === "") {
-			setContents({ contents: defaultJson, skipUpdate: true })
-		}
-		setContents({ contents: json, skipUpdate: true })
-	}, [json])
+		const contentToSet = json === "" ? defaultJson : json
+		setContents({ contents: contentToSet, skipUpdate: true })
+	}, [json, setContents])
+
+	// ========================================================================
+	// Render
+	// ========================================================================
 
 	return (
 		<div className="json-graph-container relative h-screen w-full overflow-hidden">
-			<div className="bg-container-editor-graph relative h-screen w-full  overflow-hidden">
+			<div className="bg-container-editor-graph relative h-screen w-full overflow-hidden">
 				<div
 					className="absolute h-screen w-full overflow-hidden"
 					onContextMenu={(e) => e.preventDefault()}
@@ -57,7 +57,7 @@ const GraphViewComponent = ({ json }: GraphViewProps) => {
 					{...bindLongPress()}
 				>
 					<Space
-						onUpdated={() => debouncedOnZoomChangeHandler()}
+						onUpdated={debouncedOnZoomChange}
 						onCreate={setViewPort}
 						onContextMenu={(e) => e.preventDefault()}
 						treatTwoFingerTrackPadGesturesLikeTouch={gesturesEnabled}
