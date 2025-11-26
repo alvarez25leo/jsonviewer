@@ -46,7 +46,7 @@ const ModalComponent = ({ openModal, closeModal, children, title, style, classNa
 						</button>
 					</div>
 				</div>
-				<div className="h-full w-full overflow-auto">{children}</div>
+				<div className="w-full overflow-auto" style={{ height: 'calc(100% - 50px)' }}>{children}</div>
 			</div>
 		</dialog>
 	)

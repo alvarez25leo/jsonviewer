@@ -88,9 +88,9 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 			openModal={opened}
 			title="📚 JSON Templates"
 			closeModal={onClose}
-			style={{ minWidth: "900px", minHeight: "85vh" }}
+			style={{ minWidth: "900px", height: "85vh", maxHeight: "85vh" }}
 		>
-			<div className="flex h-full flex-col gap-4">
+			<div className="flex h-full flex-col gap-4 overflow-hidden">
 				{/* Search and Filters */}
 				<div className="flex gap-4">
 					{/* Search */}
@@ -147,7 +147,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 				</div>
 
 				{/* Main Content */}
-				<div className="flex flex-1 gap-4 overflow-hidden">
+				<div className="flex min-h-0 flex-1 gap-4 overflow-hidden">
 					{/* Templates List */}
 					<div className="custom-scrollbar flex-1 overflow-auto rounded-md bg-gray-800/50 p-4">
 						{Object.entries(groupedTemplates).length === 0 ? (
