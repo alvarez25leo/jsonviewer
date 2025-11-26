@@ -1,0 +1,238 @@
+{
+	"common": {
+		"save": "Guardar",
+		"cancel": "Cancelar",
+		"close": "Cerrar",
+		"delete": "Eliminar",
+		"edit": "Editar",
+		"copy": "Copiar",
+		"paste": "Pegar",
+		"search": "Buscar",
+		"clear": "Limpiar",
+		"loading": "Cargando...",
+		"error": "Error",
+		"success": "Éxito",
+		"confirm": "Confirmar",
+		"yes": "Sí",
+		"no": "No",
+		"apply": "Aplicar",
+		"reset": "Restablecer",
+		"export": "Exportar",
+		"import": "Importar",
+		"download": "Descargar",
+		"upload": "Subir",
+		"preview": "Vista previa",
+		"settings": "Configuración",
+		"language": "Idioma"
+	},
+	"editor": {
+		"title": "Editor JSON",
+		"placeholder": "Pega o escribe tu JSON aquí...",
+		"formatJson": "Formatear JSON",
+		"minifyJson": "Minificar JSON",
+		"validateJson": "Validar JSON",
+		"copyToClipboard": "Copiar al portapapeles",
+		"clearEditor": "Limpiar editor",
+		"jsonValid": "JSON válido",
+		"jsonInvalid": "JSON inválido",
+		"lineCount": "{{count}} líneas",
+		"charCount": "{{count}} caracteres"
+	},
+	"graph": {
+		"title": "Vista de Grafo",
+		"zoomIn": "Acercar",
+		"zoomOut": "Alejar",
+		"fitToScreen": "Ajustar a pantalla",
+		"centerGraph": "Centrar grafo",
+		"expandAll": "Expandir todo",
+		"collapseAll": "Colapsar todo",
+		"searchNodes": "Buscar nodos...",
+		"noResults": "No se encontraron resultados"
+	},
+	"toolbar": {
+		"editorView": "Vista Editor",
+		"graphView": "Vista Grafo",
+		"splitView": "Vista Dividida",
+		"darkMode": "Modo Oscuro",
+		"lightMode": "Modo Claro",
+		"fullscreen": "Pantalla Completa",
+		"exitFullscreen": "Salir de Pantalla Completa"
+	},
+	"sidebar": {
+		"features": "Características",
+		"jsonPath": "Consulta JSONPath",
+		"export": "Exportar / Convertir",
+		"transform": "Transformar JSON",
+		"schema": "Validador de Schema",
+		"diff": "Comparar JSON",
+		"mock": "Generar Datos Mock",
+		"api": "Importar desde API",
+		"templates": "Plantillas",
+		"browseTemplates": "Explorar Plantillas",
+		"saveAsTemplate": "Guardar como Plantilla",
+		"history": "Historial",
+		"undo": "Deshacer",
+		"redo": "Rehacer"
+	},
+	"modals": {
+		"jsonPath": {
+			"title": "Consulta JSONPath",
+			"queryLabel": "Expresión JSONPath",
+			"queryPlaceholder": "ej., $.store.book[*].author",
+			"execute": "Ejecutar Consulta",
+			"results": "Resultados",
+			"noResults": "No se encontraron resultados",
+			"examples": "Ejemplos",
+			"copyResults": "Copiar Resultados"
+		},
+		"export": {
+			"title": "Exportar JSON",
+			"selectFormat": "Seleccionar Formato",
+			"formats": {
+				"json": "JSON (Formateado)",
+				"minified": "JSON (Minificado)",
+				"yaml": "YAML",
+				"xml": "XML",
+				"csv": "CSV",
+				"typescript": "Interfaz TypeScript",
+				"go": "Struct Go",
+				"jsonSchema": "JSON Schema"
+			},
+			"copyToClipboard": "Copiar al Portapapeles",
+			"downloadFile": "Descargar Archivo",
+			"copied": "¡Copiado al portapapeles!"
+		},
+		"transform": {
+			"title": "Transformar JSON",
+			"operations": {
+				"sortKeys": "Ordenar Claves",
+				"flatten": "Aplanar",
+				"unflatten": "Desaplanar",
+				"removeNulls": "Eliminar Nulos",
+				"removeEmpty": "Eliminar Valores Vacíos",
+				"convertCase": "Convertir Mayúsculas/Minúsculas"
+			},
+			"caseOptions": {
+				"camelCase": "camelCase",
+				"snake_case": "snake_case",
+				"PascalCase": "PascalCase",
+				"kebab-case": "kebab-case"
+			},
+			"apply": "Aplicar Transformación",
+			"preview": "Vista Previa"
+		},
+		"schema": {
+			"title": "Validador de JSON Schema",
+			"schemaInput": "JSON Schema",
+			"validate": "Validar",
+			"valid": "¡JSON válido según el schema!",
+			"invalid": "Validación fallida",
+			"errors": "Errores",
+			"generateSchema": "Generar Schema desde JSON"
+		},
+		"diff": {
+			"title": "Comparar JSON",
+			"original": "JSON Original",
+			"modified": "JSON Modificado",
+			"compare": "Comparar",
+			"differences": "Diferencias",
+			"noDifferences": "No se encontraron diferencias",
+			"added": "Añadido",
+			"removed": "Eliminado",
+			"changed": "Modificado"
+		},
+		"mock": {
+			"title": "Generar Datos Mock",
+			"count": "Número de elementos",
+			"generate": "Generar",
+			"regenerate": "Regenerar",
+			"useData": "Usar Datos Generados"
+		},
+		"api": {
+			"title": "Importar desde API",
+			"url": "URL de la API",
+			"urlPlaceholder": "https://api.ejemplo.com/datos",
+			"method": "Método",
+			"headers": "Cabeceras (JSON)",
+			"body": "Cuerpo de la Petición",
+			"fetch": "Obtener Datos",
+			"fetching": "Obteniendo...",
+			"success": "¡Datos obtenidos exitosamente!",
+			"error": "Error al obtener datos"
+		},
+		"templates": {
+			"title": "Plantillas JSON",
+			"search": "Buscar plantillas...",
+			"allCategories": "Todas las Categorías",
+			"categories": {
+				"api": "Respuestas API",
+				"config": "Configuración",
+				"schema": "Schemas",
+				"data": "Estructuras de Datos",
+				"testing": "Testing",
+				"ecommerce": "E-commerce",
+				"user": "Usuario y Auth",
+				"custom": "Personalizadas"
+			},
+			"useTemplate": "Usar Plantilla",
+			"deleteTemplate": "Eliminar Plantilla",
+			"selectToPreview": "Selecciona una plantilla para previsualizar",
+			"predefined": "{{count}} plantillas predefinidas",
+			"custom": "{{count}} plantillas personalizadas",
+			"clickToPreview": "Haz clic en una plantilla para previsualizarla, luego \"Usar Plantilla\" para cargarla"
+		},
+		"saveTemplate": {
+			"title": "Guardar como Plantilla",
+			"name": "Nombre de la Plantilla",
+			"namePlaceholder": "Mi Plantilla",
+			"description": "Descripción",
+			"descriptionPlaceholder": "Describe tu plantilla...",
+			"category": "Categoría",
+			"tags": "Etiquetas",
+			"tagsPlaceholder": "etiqueta1, etiqueta2, etiqueta3",
+			"save": "Guardar Plantilla",
+			"saved": "¡Plantilla guardada exitosamente!"
+		},
+		"shortcuts": {
+			"title": "Atajos de Teclado",
+			"general": "General",
+			"editor": "Editor",
+			"navigation": "Navegación",
+			"templates": "Plantillas",
+			"commandPalette": "Paleta de Comandos",
+			"formatJson": "Formatear JSON",
+			"saveFile": "Guardar Archivo",
+			"undo": "Deshacer",
+			"redo": "Rehacer",
+			"find": "Buscar",
+			"replace": "Buscar y Reemplazar",
+			"goToLine": "Ir a Línea",
+			"toggleComment": "Alternar Comentario",
+			"browseTemplates": "Explorar Plantillas",
+			"saveAsTemplate": "Guardar como Plantilla"
+		},
+		"commandPalette": {
+			"placeholder": "Escribe un comando...",
+			"noResults": "No se encontraron comandos"
+		}
+	},
+	"notifications": {
+		"copied": "¡Copiado al portapapeles!",
+		"saved": "¡Guardado exitosamente!",
+		"deleted": "¡Eliminado exitosamente!",
+		"exported": "¡Exportado exitosamente!",
+		"imported": "¡Importado exitosamente!",
+		"templateLoaded": "¡Plantilla \"{{name}}\" cargada!",
+		"templateSaved": "¡Plantilla guardada exitosamente!",
+		"jsonFormatted": "¡JSON formateado!",
+		"jsonMinified": "¡JSON minificado!",
+		"invalidJson": "JSON inválido",
+		"errorOccurred": "Ocurrió un error"
+	},
+	"footer": {
+		"ready": "Listo",
+		"processing": "Procesando...",
+		"nodes": "{{count}} nodos",
+		"edges": "{{count}} aristas"
+	}
+}

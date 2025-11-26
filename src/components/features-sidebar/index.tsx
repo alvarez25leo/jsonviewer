@@ -1,4 +1,6 @@
 import useModal from "@/store/useModal"
+import useLanguage from "@/hooks/useLanguage"
+import LanguageSelector from "@/components/language-selector"
 
 interface FeatureButtonProps {
 	icon: string
@@ -36,6 +38,7 @@ const FeatureGroup: React.FC<FeatureGroupProps> = ({ title, children }) => (
 )
 
 export const FeaturesSidebar: React.FC = () => {
+	const { t } = useLanguage()
 	const {
 		setExport,
 		setTransform,
@@ -52,39 +55,47 @@ export const FeaturesSidebar: React.FC = () => {
 
 	return (
 		<div className="flex flex-col">
-			<FeatureGroup title="Templates">
-				<FeatureButton icon="📚" label="Browse Templates" onClick={() => setTemplates(true)} shortcut="Ctrl+Shift+T" />
-				<FeatureButton icon="💾" label="Save as Template" onClick={() => setSaveTemplate(true)} shortcut="Ctrl+Shift+S" />
+			{/* Language Selector */}
+			<div className="mb-4 px-3">
+				<div className="mb-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">
+					{t("common.language")}
+				</div>
+				<LanguageSelector variant="dropdown" className="w-full" />
+			</div>
+
+			<FeatureGroup title={t("sidebar.templates")}>
+				<FeatureButton icon="📚" label={t("sidebar.browseTemplates")} onClick={() => setTemplates(true)} shortcut="Ctrl+Shift+T" />
+				<FeatureButton icon="💾" label={t("sidebar.saveAsTemplate")} onClick={() => setSaveTemplate(true)} shortcut="Ctrl+Shift+S" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Export">
-				<FeatureButton icon="📤" label="Export JSON" onClick={() => setExport(true)} shortcut="Ctrl+E" />
+			<FeatureGroup title={t("common.export")}>
+				<FeatureButton icon="📤" label={t("sidebar.export")} onClick={() => setExport(true)} shortcut="Ctrl+E" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Transform">
-				<FeatureButton icon="🔄" label="Transform" onClick={() => setTransform(true)} shortcut="Ctrl+T" />
+			<FeatureGroup title={t("sidebar.transform")}>
+				<FeatureButton icon="🔄" label={t("sidebar.transform")} onClick={() => setTransform(true)} shortcut="Ctrl+T" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Generate">
-				<FeatureButton icon="🎲" label="Mock Data" onClick={() => setMockGenerator(true)} shortcut="Ctrl+G" />
-				<FeatureButton icon="🌐" label="Import API" onClick={() => setApiImport(true)} shortcut="Ctrl+I" />
+			<FeatureGroup title={t("sidebar.mock")}>
+				<FeatureButton icon="🎲" label={t("sidebar.mock")} onClick={() => setMockGenerator(true)} shortcut="Ctrl+G" />
+				<FeatureButton icon="🌐" label={t("sidebar.api")} onClick={() => setApiImport(true)} shortcut="Ctrl+I" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Query & Validate">
-				<FeatureButton icon="🔍" label="JSONPath" onClick={() => setJsonpath(true)} shortcut="Ctrl+J" />
-				<FeatureButton icon="✅" label="Validate Schema" onClick={() => setSchemaValidator(true)} shortcut="Ctrl+Shift+V" />
+			<FeatureGroup title={t("sidebar.jsonPath")}>
+				<FeatureButton icon="🔍" label={t("sidebar.jsonPath")} onClick={() => setJsonpath(true)} shortcut="Ctrl+J" />
+				<FeatureButton icon="✅" label={t("sidebar.schema")} onClick={() => setSchemaValidator(true)} shortcut="Ctrl+Shift+V" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Compare">
-				<FeatureButton icon="⚖️" label="Diff JSONs" onClick={() => setDiff(true)} shortcut="Ctrl+Shift+D" />
+			<FeatureGroup title={t("sidebar.diff")}>
+				<FeatureButton icon="⚖️" label={t("sidebar.diff")} onClick={() => setDiff(true)} shortcut="Ctrl+Shift+D" />
 			</FeatureGroup>
 
-			<FeatureGroup title="History">
-				<FeatureButton icon="📜" label="History" onClick={() => setHistory(true)} shortcut="Ctrl+Shift+H" />
+			<FeatureGroup title={t("sidebar.history")}>
+				<FeatureButton icon="📜" label={t("sidebar.history")} onClick={() => setHistory(true)} shortcut="Ctrl+Shift+H" />
 			</FeatureGroup>
 
-			<FeatureGroup title="Help">
-				<FeatureButton icon="⌨️" label="Shortcuts" onClick={() => setShortcuts(true)} shortcut="?" />
+			<FeatureGroup title={t("modals.shortcuts.title")}>
+				<FeatureButton icon="⌨️" label={t("modals.shortcuts.title")} onClick={() => setShortcuts(true)} shortcut="?" />
 			</FeatureGroup>
 
 			{/* Command Palette Hint */}

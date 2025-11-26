@@ -1,0 +1,238 @@
+{
+	"common": {
+		"save": "Save",
+		"cancel": "Cancel",
+		"close": "Close",
+		"delete": "Delete",
+		"edit": "Edit",
+		"copy": "Copy",
+		"paste": "Paste",
+		"search": "Search",
+		"clear": "Clear",
+		"loading": "Loading...",
+		"error": "Error",
+		"success": "Success",
+		"confirm": "Confirm",
+		"yes": "Yes",
+		"no": "No",
+		"apply": "Apply",
+		"reset": "Reset",
+		"export": "Export",
+		"import": "Import",
+		"download": "Download",
+		"upload": "Upload",
+		"preview": "Preview",
+		"settings": "Settings",
+		"language": "Language"
+	},
+	"editor": {
+		"title": "JSON Editor",
+		"placeholder": "Paste or type your JSON here...",
+		"formatJson": "Format JSON",
+		"minifyJson": "Minify JSON",
+		"validateJson": "Validate JSON",
+		"copyToClipboard": "Copy to Clipboard",
+		"clearEditor": "Clear Editor",
+		"jsonValid": "Valid JSON",
+		"jsonInvalid": "Invalid JSON",
+		"lineCount": "{{count}} lines",
+		"charCount": "{{count}} characters"
+	},
+	"graph": {
+		"title": "Graph View",
+		"zoomIn": "Zoom In",
+		"zoomOut": "Zoom Out",
+		"fitToScreen": "Fit to Screen",
+		"centerGraph": "Center Graph",
+		"expandAll": "Expand All",
+		"collapseAll": "Collapse All",
+		"searchNodes": "Search nodes...",
+		"noResults": "No results found"
+	},
+	"toolbar": {
+		"editorView": "Editor View",
+		"graphView": "Graph View",
+		"splitView": "Split View",
+		"darkMode": "Dark Mode",
+		"lightMode": "Light Mode",
+		"fullscreen": "Fullscreen",
+		"exitFullscreen": "Exit Fullscreen"
+	},
+	"sidebar": {
+		"features": "Features",
+		"jsonPath": "JSONPath Query",
+		"export": "Export / Convert",
+		"transform": "Transform JSON",
+		"schema": "Schema Validator",
+		"diff": "JSON Diff",
+		"mock": "Generate Mock Data",
+		"api": "Import from API",
+		"templates": "Templates",
+		"browseTemplates": "Browse Templates",
+		"saveAsTemplate": "Save as Template",
+		"history": "History",
+		"undo": "Undo",
+		"redo": "Redo"
+	},
+	"modals": {
+		"jsonPath": {
+			"title": "JSONPath Query",
+			"queryLabel": "JSONPath Expression",
+			"queryPlaceholder": "e.g., $.store.book[*].author",
+			"execute": "Execute Query",
+			"results": "Results",
+			"noResults": "No results found",
+			"examples": "Examples",
+			"copyResults": "Copy Results"
+		},
+		"export": {
+			"title": "Export JSON",
+			"selectFormat": "Select Format",
+			"formats": {
+				"json": "JSON (Formatted)",
+				"minified": "JSON (Minified)",
+				"yaml": "YAML",
+				"xml": "XML",
+				"csv": "CSV",
+				"typescript": "TypeScript Interface",
+				"go": "Go Struct",
+				"jsonSchema": "JSON Schema"
+			},
+			"copyToClipboard": "Copy to Clipboard",
+			"downloadFile": "Download File",
+			"copied": "Copied to clipboard!"
+		},
+		"transform": {
+			"title": "Transform JSON",
+			"operations": {
+				"sortKeys": "Sort Keys",
+				"flatten": "Flatten",
+				"unflatten": "Unflatten",
+				"removeNulls": "Remove Nulls",
+				"removeEmpty": "Remove Empty Values",
+				"convertCase": "Convert Keys Case"
+			},
+			"caseOptions": {
+				"camelCase": "camelCase",
+				"snake_case": "snake_case",
+				"PascalCase": "PascalCase",
+				"kebab-case": "kebab-case"
+			},
+			"apply": "Apply Transform",
+			"preview": "Preview"
+		},
+		"schema": {
+			"title": "JSON Schema Validator",
+			"schemaInput": "JSON Schema",
+			"validate": "Validate",
+			"valid": "JSON is valid against the schema!",
+			"invalid": "Validation failed",
+			"errors": "Errors",
+			"generateSchema": "Generate Schema from JSON"
+		},
+		"diff": {
+			"title": "JSON Diff",
+			"original": "Original JSON",
+			"modified": "Modified JSON",
+			"compare": "Compare",
+			"differences": "Differences",
+			"noDifferences": "No differences found",
+			"added": "Added",
+			"removed": "Removed",
+			"changed": "Changed"
+		},
+		"mock": {
+			"title": "Generate Mock Data",
+			"count": "Number of items",
+			"generate": "Generate",
+			"regenerate": "Regenerate",
+			"useData": "Use Generated Data"
+		},
+		"api": {
+			"title": "Import from API",
+			"url": "API URL",
+			"urlPlaceholder": "https://api.example.com/data",
+			"method": "Method",
+			"headers": "Headers (JSON)",
+			"body": "Request Body",
+			"fetch": "Fetch Data",
+			"fetching": "Fetching...",
+			"success": "Data fetched successfully!",
+			"error": "Failed to fetch data"
+		},
+		"templates": {
+			"title": "JSON Templates",
+			"search": "Search templates...",
+			"allCategories": "All Categories",
+			"categories": {
+				"api": "API Responses",
+				"config": "Configuration",
+				"schema": "Schemas",
+				"data": "Data Structures",
+				"testing": "Testing",
+				"ecommerce": "E-commerce",
+				"user": "User & Auth",
+				"custom": "Custom"
+			},
+			"useTemplate": "Use Template",
+			"deleteTemplate": "Delete Template",
+			"selectToPreview": "Select a template to preview",
+			"predefined": "{{count}} predefined templates",
+			"custom": "{{count}} custom templates",
+			"clickToPreview": "Click a template to preview, then \"Use Template\" to load it"
+		},
+		"saveTemplate": {
+			"title": "Save as Template",
+			"name": "Template Name",
+			"namePlaceholder": "My Template",
+			"description": "Description",
+			"descriptionPlaceholder": "Describe your template...",
+			"category": "Category",
+			"tags": "Tags",
+			"tagsPlaceholder": "tag1, tag2, tag3",
+			"save": "Save Template",
+			"saved": "Template saved successfully!"
+		},
+		"shortcuts": {
+			"title": "Keyboard Shortcuts",
+			"general": "General",
+			"editor": "Editor",
+			"navigation": "Navigation",
+			"templates": "Templates",
+			"commandPalette": "Command Palette",
+			"formatJson": "Format JSON",
+			"saveFile": "Save File",
+			"undo": "Undo",
+			"redo": "Redo",
+			"find": "Find",
+			"replace": "Find & Replace",
+			"goToLine": "Go to Line",
+			"toggleComment": "Toggle Comment",
+			"browseTemplates": "Browse Templates",
+			"saveAsTemplate": "Save as Template"
+		},
+		"commandPalette": {
+			"placeholder": "Type a command...",
+			"noResults": "No commands found"
+		}
+	},
+	"notifications": {
+		"copied": "Copied to clipboard!",
+		"saved": "Saved successfully!",
+		"deleted": "Deleted successfully!",
+		"exported": "Exported successfully!",
+		"imported": "Imported successfully!",
+		"templateLoaded": "Template \"{{name}}\" loaded!",
+		"templateSaved": "Template saved successfully!",
+		"jsonFormatted": "JSON formatted!",
+		"jsonMinified": "JSON minified!",
+		"invalidJson": "Invalid JSON",
+		"errorOccurred": "An error occurred"
+	},
+	"footer": {
+		"ready": "Ready",
+		"processing": "Processing...",
+		"nodes": "{{count}} nodes",
+		"edges": "{{count}} edges"
+	}
+}

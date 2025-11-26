@@ -6,6 +6,8 @@ import App from "./App.tsx"
 import EditorGraphPage from "./pages/editor-graph.page"
 import "./index.css"
 import "./css/fonts.css"
+// Initialize i18n
+import "./i18n"
 import { ThemeProvider } from "styled-components"
 import { darkTheme } from "./constants/theme.ts"
 

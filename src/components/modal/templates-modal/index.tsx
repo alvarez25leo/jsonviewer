@@ -4,11 +4,11 @@ import { modalProps } from "@/types"
 import useJson from "@/store/useJson"
 import useFile from "@/store/useFile"
 import useTemplates from "@/store/useTemplates"
+import useLanguage from "@/hooks/useLanguage"
 import {
 	Template,
 	TemplateCategory,
 	predefinedTemplates,
-	categoryLabels,
 	categoryIcons,
 	getTemplateCategories,
 	searchTemplates,
@@ -16,6 +16,7 @@ import {
 import { toast } from "sonner"
 
 export const TemplatesModal = ({ opened, onClose }: modalProps) => {
+	const { t } = useLanguage()
 	const { setJson } = useJson()
 	const { setContents } = useFile()
 	const { customTemplates, removeTemplate } = useTemplates()
@@ -23,6 +24,9 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 	const [selectedCategory, setSelectedCategory] = useState<TemplateCategory | "all">("all")
 	const [searchQuery, setSearchQuery] = useState("")
 	const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null)
+
+	// Get translated category labels
+	const getCategoryLabel = (cat: TemplateCategory) => t(`modals.templates.categories.${cat}`)
 
 	// Get all templates based on filters
 	const filteredTemplates = useMemo(() => {
@@ -67,14 +71,14 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 		const jsonStr = JSON.stringify(template.content, null, 2)
 		setContents({ contents: jsonStr })
 		setJson(jsonStr)
-		toast.success(`Template "${template.name}" loaded!`)
+		toast.success(t("notifications.templateLoaded", { name: template.name }))
 		onClose()
 	}
 
 	const handleDeleteTemplate = (template: Template) => {
 		if (template.isCustom) {
 			removeTemplate(template.id)
-			toast.success("Template deleted")
+			toast.success(t("notifications.deleted"))
 			if (previewTemplate?.id === template.id) {
 				setPreviewTemplate(null)
 			}
@@ -86,7 +90,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 	return (
 		<ModalComponent
 			openModal={opened}
-			title="📚 JSON Templates"
+			title={`📚 ${t("modals.templates.title")}`}
 			closeModal={onClose}
 			style={{ minWidth: "900px", height: "85vh", maxHeight: "85vh" }}
 		>
@@ -99,7 +103,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 							type="text"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							placeholder="Search templates..."
+							placeholder={t("modals.templates.search")}
 							className="w-full rounded-md border border-gray-600 bg-gray-800 px-4 py-2 text-white placeholder:text-gray-500"
 						/>
 					</div>
@@ -110,10 +114,10 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 						onChange={(e) => setSelectedCategory(e.target.value as TemplateCategory | "all")}
 						className="rounded-md border border-gray-600 bg-gray-800 px-4 py-2 text-white"
 					>
-						<option value="all">All Categories</option>
+						<option value="all">{t("modals.templates.allCategories")}</option>
 						{categories.map((cat) => (
 							<option key={cat} value={cat}>
-								{categoryIcons[cat]} {categoryLabels[cat]}
+								{categoryIcons[cat]} {getCategoryLabel(cat)}
 							</option>
 						))}
 					</select>
@@ -129,7 +133,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 								: "bg-gray-700 text-gray-300 hover:bg-gray-600"
 						}`}
 					>
-						All
+						{t("modals.templates.allCategories")}
 					</button>
 					{categories.map((cat) => (
 						<button
@@ -141,7 +145,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 									: "bg-gray-700 text-gray-300 hover:bg-gray-600"
 							}`}
 						>
-							{categoryIcons[cat]} {categoryLabels[cat]}
+							{categoryIcons[cat]} {getCategoryLabel(cat)}
 						</button>
 					))}
 				</div>
@@ -152,14 +156,14 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 					<div className="custom-scrollbar flex-1 overflow-auto rounded-md bg-gray-800/50 p-4">
 						{Object.entries(groupedTemplates).length === 0 ? (
 							<div className="py-8 text-center text-gray-500">
-								{searchQuery ? "No templates found matching your search" : "No templates in this category"}
+								{searchQuery ? t("graph.noResults") : t("graph.noResults")}
 							</div>
 						) : (
 							Object.entries(groupedTemplates).map(([category, templates]) => (
 								<div key={category} className="mb-6">
 									<h3 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gray-400">
 										{categoryIcons[category as TemplateCategory]}
-										{categoryLabels[category as TemplateCategory]}
+										{getCategoryLabel(category as TemplateCategory)}
 										<span className="rounded-full bg-gray-700 px-2 py-0.5 text-xs">
 											{templates.length}
 										</span>
@@ -239,14 +243,14 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 										onClick={() => handleUseTemplate(previewTemplate)}
 										className="mb-2 w-full rounded-md bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
 									>
-										Use Template
+										{t("modals.templates.useTemplate")}
 									</button>
 									{previewTemplate.isCustom && (
 										<button
 											onClick={() => handleDeleteTemplate(previewTemplate)}
 											className="w-full rounded-md bg-red-600/30 px-4 py-2 text-sm text-red-300 hover:bg-red-600/50"
 										>
-											Delete Template
+											{t("modals.templates.deleteTemplate")}
 										</button>
 									)}
 								</div>
@@ -255,7 +259,7 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 							<div className="flex flex-1 items-center justify-center p-4 text-center text-gray-500">
 								<div>
 									<div className="mb-2 text-4xl">📋</div>
-									<p>Select a template to preview</p>
+									<p>{t("modals.templates.selectToPreview")}</p>
 								</div>
 							</div>
 						)}
@@ -265,9 +269,9 @@ export const TemplatesModal = ({ opened, onClose }: modalProps) => {
 				{/* Stats Footer */}
 				<div className="flex items-center justify-between border-t border-gray-700 pt-3 text-sm text-gray-500">
 					<span>
-						{predefinedTemplates.length} predefined templates • {customTemplates.length} custom templates
+						{t("modals.templates.predefined", { count: predefinedTemplates.length })} • {t("modals.templates.custom", { count: customTemplates.length })}
 					</span>
-					<span>Click a template to preview, then "Use Template" to load it</span>
+					<span>{t("modals.templates.clickToPreview")}</span>
 				</div>
 			</div>
 		</ModalComponent>
